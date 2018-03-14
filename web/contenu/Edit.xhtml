@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContenuEditDlg" widgetVar="ContenuEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditContenuTitle}">
+            <h:form id="ContenuEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contenuController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditContenuLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{contenuController.selected.id}" title="#{bundle.EditContenuTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditContenuLabel_extension}" for="extension" />
+                        <p:inputText id="extension" value="#{contenuController.selected.extension}" title="#{bundle.EditContenuTitle_extension}" />
+                        <p:outputLabel value="#{bundle.EditContenuLabel_chemin}" for="chemin" />
+                        <p:inputText id="chemin" value="#{contenuController.selected.chemin}" title="#{bundle.EditContenuTitle_chemin}" />
+                        <p:outputLabel value="#{bundle.EditContenuLabel_message}" for="message" />
+                        <p:selectOneMenu id="message" value="#{contenuController.selected.message}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{messageController.itemsAvailableSelectOne}"
+                                           var="messageItem"
+                                           itemValue="#{messageItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditContenuLabel_publication}" for="publication" />
+                        <p:selectOneMenu id="publication" value="#{contenuController.selected.publication}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{publicationController.itemsAvailableSelectOne}"
+                                           var="publicationItem"
+                                           itemValue="#{publicationItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditContenuLabel_commentaire}" for="commentaire" />
+                        <p:selectOneMenu id="commentaire" value="#{contenuController.selected.commentaire}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{commentaireController.itemsAvailableSelectOne}"
+                                           var="commentaireItem"
+                                           itemValue="#{commentaireItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{contenuController.update}" value="#{bundle.Save}" update="display,:ContenuListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ContenuEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ContenuEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

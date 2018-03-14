@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmploiCreateDlg" widgetVar="EmploiCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmploiTitle}">
+            <h:form id="EmploiCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{emploiController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmploiLabel_poste}" for="poste" />
+                        <p:inputText id="poste" value="#{emploiController.selected.poste}" title="#{bundle.CreateEmploiTitle_poste}" />
+                        <p:outputLabel value="#{bundle.CreateEmploiLabel_entreprise}" for="entreprise" />
+                        <p:inputText id="entreprise" value="#{emploiController.selected.entreprise}" title="#{bundle.CreateEmploiTitle_entreprise}" />
+                        <p:outputLabel value="#{bundle.CreateEmploiLabel_lieu}" for="lieu" />
+                        <p:inputText id="lieu" value="#{emploiController.selected.lieu}" title="#{bundle.CreateEmploiTitle_lieu}" />
+                        <p:outputLabel value="#{bundle.CreateEmploiLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{emploiController.selected.id}" title="#{bundle.CreateEmploiTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{emploiController.create}" value="#{bundle.Save}" update="display,:EmploiListForm:datalist,:growl" oncomplete="handleSubmit(args,'EmploiCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmploiCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

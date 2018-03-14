@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SignalUserViewDlg" widgetVar="SignalUserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSignalUserTitle}">
+            <h:form id="SignalUserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{signalUserController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSignalUserLabel_id}"/>
+                        <h:outputText value="#{signalUserController.selected.id}" title="#{bundle.ViewSignalUserTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewSignalUserLabel_cause}"/>
+                        <h:outputText value="#{signalUserController.selected.cause}" title="#{bundle.ViewSignalUserTitle_cause}"/>
+                        <h:outputText value="#{bundle.ViewSignalUserLabel_dateSignal}"/>
+                        <h:outputText value="#{signalUserController.selected.dateSignal}" title="#{bundle.ViewSignalUserTitle_dateSignal}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSignalUserLabel_dateSupression}"/>
+                        <h:outputText value="#{signalUserController.selected.dateSupression}" title="#{bundle.ViewSignalUserTitle_dateSupression}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSignalUserLabel_userAction}"/>
+                        <h:outputText value="#{signalUserController.selected.userAction}" title="#{bundle.ViewSignalUserTitle_userAction}"/>
+                        <h:outputText value="#{bundle.ViewSignalUserLabel_userSignale}"/>
+                        <h:outputText value="#{signalUserController.selected.userSignale}" title="#{bundle.ViewSignalUserTitle_userSignale}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SignalUserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

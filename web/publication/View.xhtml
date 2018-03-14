@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PublicationViewDlg" widgetVar="PublicationViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPublicationTitle}">
+            <h:form id="PublicationViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{publicationController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPublicationLabel_id}"/>
+                        <h:outputText value="#{publicationController.selected.id}" title="#{bundle.ViewPublicationTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_datePublication}"/>
+                        <h:outputText value="#{publicationController.selected.datePublication}" title="#{bundle.ViewPublicationTitle_datePublication}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_texte}"/>
+                        <h:outputText value="#{publicationController.selected.texte}" title="#{bundle.ViewPublicationTitle_texte}"/>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_recepteur}"/>
+                        <h:outputText value="#{publicationController.selected.recepteur}" title="#{bundle.ViewPublicationTitle_recepteur}"/>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_emetteur}"/>
+                        <h:outputText value="#{publicationController.selected.emetteur}" title="#{bundle.ViewPublicationTitle_emetteur}"/>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_groupe}"/>
+                        <h:outputText value="#{publicationController.selected.groupe}" title="#{bundle.ViewPublicationTitle_groupe}"/>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_droit}"/>
+                        <h:outputText value="#{publicationController.selected.droit}" title="#{bundle.ViewPublicationTitle_droit}"/>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_dateSuppression}"/>
+                        <h:outputText value="#{publicationController.selected.dateSuppression}" title="#{bundle.ViewPublicationTitle_dateSuppression}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_dateModification}"/>
+                        <h:outputText value="#{publicationController.selected.dateModification}" title="#{bundle.ViewPublicationTitle_dateModification}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_code}"/>
+                        <h:outputText value="#{publicationController.selected.code}" title="#{bundle.ViewPublicationTitle_code}"/>
+                        <h:outputText value="#{bundle.ViewPublicationLabel_returnBack}"/>
+                        <p:selectBooleanCheckbox value="#{publicationController.selected.returnBack}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PublicationViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

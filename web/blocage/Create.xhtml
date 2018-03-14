@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BlocageCreateDlg" widgetVar="BlocageCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBlocageTitle}">
+            <h:form id="BlocageCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{blocageController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBlocageLabel_dateSuppression}" for="dateSuppression" />
+                        <p:calendar id="dateSuppression" pattern="MM/dd/yyyy" value="#{blocageController.selected.dateSuppression}" title="#{bundle.EditBlocageTitle_dateSuppression}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBlocageLabel_pretexte}" for="pretexte" />
+                        <p:inputText id="pretexte" value="#{blocageController.selected.pretexte}" title="#{bundle.CreateBlocageTitle_pretexte}" />
+                        <p:outputLabel value="#{bundle.CreateBlocageLabel_dateBlocage}" for="dateBlocage" />
+                        <p:calendar id="dateBlocage" pattern="MM/dd/yyyy" value="#{blocageController.selected.dateBlocage}" title="#{bundle.EditBlocageTitle_dateBlocage}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBlocageLabel_bloque}" for="bloque" />
+                        <p:selectOneMenu id="bloque" value="#{blocageController.selected.bloque}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="bloqueItem"
+                                           itemValue="#{bloqueItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBlocageLabel_bloqueur}" for="bloqueur" />
+                        <p:selectOneMenu id="bloqueur" value="#{blocageController.selected.bloqueur}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="bloqueurItem"
+                                           itemValue="#{bloqueurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBlocageLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{blocageController.selected.id}" title="#{bundle.CreateBlocageTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{blocageController.create}" value="#{bundle.Save}" update="display,:BlocageListForm:datalist,:growl" oncomplete="handleSubmit(args,'BlocageCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BlocageCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

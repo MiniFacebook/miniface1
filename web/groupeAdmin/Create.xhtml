@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GroupeAdminCreateDlg" widgetVar="GroupeAdminCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateGroupeAdminTitle}">
+            <h:form id="GroupeAdminCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{groupeAdminController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateGroupeAdminLabel_admin}" for="admin" />
+                        <p:selectOneMenu id="admin" value="#{groupeAdminController.selected.admin}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="adminItem"
+                                           itemValue="#{adminItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateGroupeAdminLabel_groupe}" for="groupe" />
+                        <p:selectOneMenu id="groupe" value="#{groupeAdminController.selected.groupe}" >
+                            <f:selectItems value="#{groupeController.itemsAvailableSelectOne}"
+                                           var="groupeItem"
+                                           itemValue="#{groupeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateGroupeAdminLabel_dateAdmin}" for="dateAdmin" />
+                        <p:calendar id="dateAdmin" pattern="MM/dd/yyyy" value="#{groupeAdminController.selected.dateAdmin}" title="#{bundle.EditGroupeAdminTitle_dateAdmin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateGroupeAdminLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{groupeAdminController.selected.id}" title="#{bundle.CreateGroupeAdminTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{groupeAdminController.create}" value="#{bundle.Save}" update="display,:GroupeAdminListForm:datalist,:growl" oncomplete="handleSubmit(args,'GroupeAdminCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GroupeAdminCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

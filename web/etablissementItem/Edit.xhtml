@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtablissementItemEditDlg" widgetVar="EtablissementItemEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEtablissementItemTitle}">
+            <h:form id="EtablissementItemEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etablissementItemController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEtablissementItemLabel_dateDebut}" for="dateDebut" />
+                        <p:calendar id="dateDebut" pattern="MM/dd/yyyy" value="#{etablissementItemController.selected.dateDebut}" title="#{bundle.EditEtablissementItemTitle_dateDebut}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEtablissementItemLabel_dateFin}" for="dateFin" />
+                        <p:calendar id="dateFin" pattern="MM/dd/yyyy" value="#{etablissementItemController.selected.dateFin}" title="#{bundle.EditEtablissementItemTitle_dateFin}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEtablissementItemLabel_user}" for="user" />
+                        <p:selectOneMenu id="user" value="#{etablissementItemController.selected.user}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userItem"
+                                           itemValue="#{userItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEtablissementItemLabel_etablissement}" for="etablissement" />
+                        <p:selectOneMenu id="etablissement" value="#{etablissementItemController.selected.etablissement}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{etablissementController.itemsAvailableSelectOne}"
+                                           var="etablissementItem"
+                                           itemValue="#{etablissementItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEtablissementItemLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etablissementItemController.selected.id}" title="#{bundle.EditEtablissementItemTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etablissementItemController.update}" value="#{bundle.Save}" update="display,:EtablissementItemListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EtablissementItemEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtablissementItemEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

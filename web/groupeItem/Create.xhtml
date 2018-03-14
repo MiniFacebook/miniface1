@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GroupeItemCreateDlg" widgetVar="GroupeItemCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateGroupeItemTitle}">
+            <h:form id="GroupeItemCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{groupeItemController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateGroupeItemLabel_dateIntegration}" for="dateIntegration" />
+                        <p:calendar id="dateIntegration" pattern="MM/dd/yyyy" value="#{groupeItemController.selected.dateIntegration}" title="#{bundle.EditGroupeItemTitle_dateIntegration}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateGroupeItemLabel_demandeur}" for="demandeur" />
+                        <p:selectOneMenu id="demandeur" value="#{groupeItemController.selected.demandeur}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="demandeurItem"
+                                           itemValue="#{demandeurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateGroupeItemLabel_groupe}" for="groupe" />
+                        <p:selectOneMenu id="groupe" value="#{groupeItemController.selected.groupe}" >
+                            <f:selectItems value="#{groupeController.itemsAvailableSelectOne}"
+                                           var="groupeItem"
+                                           itemValue="#{groupeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateGroupeItemLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{groupeItemController.selected.id}" title="#{bundle.CreateGroupeItemTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{groupeItemController.create}" value="#{bundle.Save}" update="display,:GroupeItemListForm:datalist,:growl" oncomplete="handleSubmit(args,'GroupeItemCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GroupeItemCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

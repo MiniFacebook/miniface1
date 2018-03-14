@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommentaireEditDlg" widgetVar="CommentaireEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCommentaireTitle}">
+            <h:form id="CommentaireEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{commentaireController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{commentaireController.selected.id}" title="#{bundle.EditCommentaireTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_texte}" for="texte" />
+                        <p:inputText id="texte" value="#{commentaireController.selected.texte}" title="#{bundle.EditCommentaireTitle_texte}" />
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_dateCommentaire}" for="dateCommentaire" />
+                        <p:calendar id="dateCommentaire" pattern="MM/dd/yyyy" value="#{commentaireController.selected.dateCommentaire}" title="#{bundle.EditCommentaireTitle_dateCommentaire}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_dateSuppression}" for="dateSuppression" />
+                        <p:calendar id="dateSuppression" pattern="MM/dd/yyyy" value="#{commentaireController.selected.dateSuppression}" title="#{bundle.EditCommentaireTitle_dateSuppression}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_dateModification}" for="dateModification" />
+                        <p:calendar id="dateModification" pattern="MM/dd/yyyy" value="#{commentaireController.selected.dateModification}" title="#{bundle.EditCommentaireTitle_dateModification}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{commentaireController.selected.code}" title="#{bundle.EditCommentaireTitle_code}" />
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_returnBack}" for="returnBack" />
+                        <p:selectBooleanCheckbox id="returnBack" value="#{commentaireController.selected.returnBack}" />
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_user}" for="user" />
+                        <p:selectOneMenu id="user" value="#{commentaireController.selected.user}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userItem"
+                                           itemValue="#{userItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCommentaireLabel_publication}" for="publication" />
+                        <p:selectOneMenu id="publication" value="#{commentaireController.selected.publication}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{publicationController.itemsAvailableSelectOne}"
+                                           var="publicationItem"
+                                           itemValue="#{publicationItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{commentaireController.update}" value="#{bundle.Save}" update="display,:CommentaireListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CommentaireEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CommentaireEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

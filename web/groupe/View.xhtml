@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GroupeViewDlg" widgetVar="GroupeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewGroupeTitle}">
+            <h:form id="GroupeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{groupeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewGroupeLabel_dateSuppression}"/>
+                        <h:outputText value="#{groupeController.selected.dateSuppression}" title="#{bundle.ViewGroupeTitle_dateSuppression}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_dateModification}"/>
+                        <h:outputText value="#{groupeController.selected.dateModification}" title="#{bundle.ViewGroupeTitle_dateModification}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_code}"/>
+                        <h:outputText value="#{groupeController.selected.code}" title="#{bundle.ViewGroupeTitle_code}"/>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_returnBack}"/>
+                        <p:selectBooleanCheckbox value="#{groupeController.selected.returnBack}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_nom}"/>
+                        <h:outputText value="#{groupeController.selected.nom}" title="#{bundle.ViewGroupeTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_etat}"/>
+                        <h:outputText value="#{groupeController.selected.etat}" title="#{bundle.ViewGroupeTitle_etat}"/>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_type}"/>
+                        <h:outputText value="#{groupeController.selected.type}" title="#{bundle.ViewGroupeTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_dateCreation}"/>
+                        <h:outputText value="#{groupeController.selected.dateCreation}" title="#{bundle.ViewGroupeTitle_dateCreation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_admin}"/>
+                        <h:outputText value="#{groupeController.selected.admin}" title="#{bundle.ViewGroupeTitle_admin}"/>
+                        <h:outputText value="#{bundle.ViewGroupeLabel_id}"/>
+                        <h:outputText value="#{groupeController.selected.id}" title="#{bundle.ViewGroupeTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="GroupeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EtablissementCreateDlg" widgetVar="EtablissementCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEtablissementTitle}">
+            <h:form id="EtablissementCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{etablissementController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEtablissementLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{etablissementController.selected.libelle}" title="#{bundle.CreateEtablissementTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.CreateEtablissementLabel_niveau}" for="niveau" />
+                        <p:inputText id="niveau" value="#{etablissementController.selected.niveau}" title="#{bundle.CreateEtablissementTitle_niveau}" />
+                        <p:outputLabel value="#{bundle.CreateEtablissementLabel_formation}" for="formation" />
+                        <p:inputText id="formation" value="#{etablissementController.selected.formation}" title="#{bundle.CreateEtablissementTitle_formation}" />
+                        <p:outputLabel value="#{bundle.CreateEtablissementLabel_dateEtablissement}" for="dateEtablissement" />
+                        <p:calendar id="dateEtablissement" pattern="MM/dd/yyyy" value="#{etablissementController.selected.dateEtablissement}" title="#{bundle.EditEtablissementTitle_dateEtablissement}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEtablissementLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{etablissementController.selected.id}" title="#{bundle.CreateEtablissementTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{etablissementController.create}" value="#{bundle.Save}" update="display,:EtablissementListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtablissementCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtablissementCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

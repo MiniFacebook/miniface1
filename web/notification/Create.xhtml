@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NotificationCreateDlg" widgetVar="NotificationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateNotificationTitle}">
+            <h:form id="NotificationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{notificationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateNotificationLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{notificationController.selected.id}" title="#{bundle.CreateNotificationTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreateNotificationLabel_texte}" for="texte" />
+                        <p:inputText id="texte" value="#{notificationController.selected.texte}" title="#{bundle.CreateNotificationTitle_texte}" />
+                        <p:outputLabel value="#{bundle.CreateNotificationLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{notificationController.selected.type}" title="#{bundle.CreateNotificationTitle_type}" />
+                        <p:outputLabel value="#{bundle.CreateNotificationLabel_idElement}" for="idElement" />
+                        <p:inputText id="idElement" value="#{notificationController.selected.idElement}" title="#{bundle.CreateNotificationTitle_idElement}" />
+                        <p:outputLabel value="#{bundle.CreateNotificationLabel_dateNotification}" for="dateNotification" />
+                        <p:calendar id="dateNotification" pattern="MM/dd/yyyy" value="#{notificationController.selected.dateNotification}" title="#{bundle.EditNotificationTitle_dateNotification}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateNotificationLabel_userAction}" for="userAction" />
+                        <p:selectOneMenu id="userAction" value="#{notificationController.selected.userAction}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userActionItem"
+                                           itemValue="#{userActionItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{notificationController.create}" value="#{bundle.Save}" update="display,:NotificationListForm:datalist,:growl" oncomplete="handleSubmit(args,'NotificationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NotificationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

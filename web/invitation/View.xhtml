@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvitationViewDlg" widgetVar="InvitationViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewInvitationTitle}">
+            <h:form id="InvitationViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invitationController.selected != null}">
+                        <h:outputText value="#{bundle.ViewInvitationLabel_bloquer}"/>
+                        <p:selectBooleanCheckbox value="#{invitationController.selected.bloquer}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_rejeter}"/>
+                        <p:selectBooleanCheckbox value="#{invitationController.selected.rejeter}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_amisProche}"/>
+                        <p:selectBooleanCheckbox value="#{invitationController.selected.amisProche}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_retirer}"/>
+                        <p:selectBooleanCheckbox value="#{invitationController.selected.retirer}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_groupe}"/>
+                        <h:outputText value="#{invitationController.selected.groupe}" title="#{bundle.ViewInvitationTitle_groupe}"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_type}"/>
+                        <h:outputText value="#{invitationController.selected.type}" title="#{bundle.ViewInvitationTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_dateEnvoi}"/>
+                        <h:outputText value="#{invitationController.selected.dateEnvoi}" title="#{bundle.ViewInvitationTitle_dateEnvoi}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_dateAcceptation}"/>
+                        <h:outputText value="#{invitationController.selected.dateAcceptation}" title="#{bundle.ViewInvitationTitle_dateAcceptation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_recepteur}"/>
+                        <h:outputText value="#{invitationController.selected.recepteur}" title="#{bundle.ViewInvitationTitle_recepteur}"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_emetteur}"/>
+                        <h:outputText value="#{invitationController.selected.emetteur}" title="#{bundle.ViewInvitationTitle_emetteur}"/>
+                        <h:outputText value="#{bundle.ViewInvitationLabel_id}"/>
+                        <h:outputText value="#{invitationController.selected.id}" title="#{bundle.ViewInvitationTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="InvitationViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

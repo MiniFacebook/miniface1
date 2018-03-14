@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CommentaireViewDlg" widgetVar="CommentaireViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCommentaireTitle}">
+            <h:form id="CommentaireViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{commentaireController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_id}"/>
+                        <h:outputText value="#{commentaireController.selected.id}" title="#{bundle.ViewCommentaireTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_texte}"/>
+                        <h:outputText value="#{commentaireController.selected.texte}" title="#{bundle.ViewCommentaireTitle_texte}"/>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_dateCommentaire}"/>
+                        <h:outputText value="#{commentaireController.selected.dateCommentaire}" title="#{bundle.ViewCommentaireTitle_dateCommentaire}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_dateSuppression}"/>
+                        <h:outputText value="#{commentaireController.selected.dateSuppression}" title="#{bundle.ViewCommentaireTitle_dateSuppression}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_dateModification}"/>
+                        <h:outputText value="#{commentaireController.selected.dateModification}" title="#{bundle.ViewCommentaireTitle_dateModification}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_code}"/>
+                        <h:outputText value="#{commentaireController.selected.code}" title="#{bundle.ViewCommentaireTitle_code}"/>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_returnBack}"/>
+                        <p:selectBooleanCheckbox value="#{commentaireController.selected.returnBack}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_user}"/>
+                        <h:outputText value="#{commentaireController.selected.user}" title="#{bundle.ViewCommentaireTitle_user}"/>
+                        <h:outputText value="#{bundle.ViewCommentaireLabel_publication}"/>
+                        <h:outputText value="#{commentaireController.selected.publication}" title="#{bundle.ViewCommentaireTitle_publication}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CommentaireViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

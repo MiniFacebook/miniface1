@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NotificationItemViewDlg" widgetVar="NotificationItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewNotificationItemTitle}">
+            <h:form id="NotificationItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{notificationItemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewNotificationItemLabel_id}"/>
+                        <h:outputText value="#{notificationItemController.selected.id}" title="#{bundle.ViewNotificationItemTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewNotificationItemLabel_vu}"/>
+                        <p:selectBooleanCheckbox value="#{notificationItemController.selected.vu}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewNotificationItemLabel_concerne}"/>
+                        <h:outputText value="#{notificationItemController.selected.concerne}" title="#{bundle.ViewNotificationItemTitle_concerne}"/>
+                        <h:outputText value="#{bundle.ViewNotificationItemLabel_notification}"/>
+                        <h:outputText value="#{notificationItemController.selected.notification}" title="#{bundle.ViewNotificationItemTitle_notification}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="NotificationItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

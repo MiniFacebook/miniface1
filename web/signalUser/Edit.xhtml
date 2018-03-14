@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SignalUserEditDlg" widgetVar="SignalUserEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSignalUserTitle}">
+            <h:form id="SignalUserEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{signalUserController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSignalUserLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{signalUserController.selected.id}" title="#{bundle.EditSignalUserTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditSignalUserLabel_cause}" for="cause" />
+                        <p:inputText id="cause" value="#{signalUserController.selected.cause}" title="#{bundle.EditSignalUserTitle_cause}" />
+                        <p:outputLabel value="#{bundle.EditSignalUserLabel_dateSignal}" for="dateSignal" />
+                        <p:calendar id="dateSignal" pattern="MM/dd/yyyy" value="#{signalUserController.selected.dateSignal}" title="#{bundle.EditSignalUserTitle_dateSignal}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSignalUserLabel_dateSupression}" for="dateSupression" />
+                        <p:calendar id="dateSupression" pattern="MM/dd/yyyy" value="#{signalUserController.selected.dateSupression}" title="#{bundle.EditSignalUserTitle_dateSupression}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSignalUserLabel_userAction}" for="userAction" />
+                        <p:selectOneMenu id="userAction" value="#{signalUserController.selected.userAction}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userActionItem"
+                                           itemValue="#{userActionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditSignalUserLabel_userSignale}" for="userSignale" />
+                        <p:selectOneMenu id="userSignale" value="#{signalUserController.selected.userSignale}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userSignaleItem"
+                                           itemValue="#{userSignaleItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{signalUserController.update}" value="#{bundle.Save}" update="display,:SignalUserListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SignalUserEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SignalUserEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

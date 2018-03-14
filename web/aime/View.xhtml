@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AimeViewDlg" widgetVar="AimeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAimeTitle}">
+            <h:form id="AimeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{aimeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAimeLabel_id}"/>
+                        <h:outputText value="#{aimeController.selected.id}" title="#{bundle.ViewAimeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewAimeLabel_dateAime}"/>
+                        <h:outputText value="#{aimeController.selected.dateAime}" title="#{bundle.ViewAimeTitle_dateAime}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAimeLabel_dateSuppression}"/>
+                        <h:outputText value="#{aimeController.selected.dateSuppression}" title="#{bundle.ViewAimeTitle_dateSuppression}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewAimeLabel_liker}"/>
+                        <h:outputText value="#{aimeController.selected.liker}" title="#{bundle.ViewAimeTitle_liker}"/>
+                        <h:outputText value="#{bundle.ViewAimeLabel_publication}"/>
+                        <h:outputText value="#{aimeController.selected.publication}" title="#{bundle.ViewAimeTitle_publication}"/>
+                        <h:outputText value="#{bundle.ViewAimeLabel_commentaire}"/>
+                        <h:outputText value="#{aimeController.selected.commentaire}" title="#{bundle.ViewAimeTitle_commentaire}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AimeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

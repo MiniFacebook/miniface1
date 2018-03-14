@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PublicationEditDlg" widgetVar="PublicationEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPublicationTitle}">
+            <h:form id="PublicationEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{publicationController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{publicationController.selected.id}" title="#{bundle.EditPublicationTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_datePublication}" for="datePublication" />
+                        <p:calendar id="datePublication" pattern="MM/dd/yyyy" value="#{publicationController.selected.datePublication}" title="#{bundle.EditPublicationTitle_datePublication}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_texte}" for="texte" />
+                        <p:inputText id="texte" value="#{publicationController.selected.texte}" title="#{bundle.EditPublicationTitle_texte}" />
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_recepteur}" for="recepteur" />
+                        <p:selectOneMenu id="recepteur" value="#{publicationController.selected.recepteur}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="recepteurItem"
+                                           itemValue="#{recepteurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_emetteur}" for="emetteur" />
+                        <p:selectOneMenu id="emetteur" value="#{publicationController.selected.emetteur}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="emetteurItem"
+                                           itemValue="#{emetteurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_groupe}" for="groupe" />
+                        <p:selectOneMenu id="groupe" value="#{publicationController.selected.groupe}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{groupeController.itemsAvailableSelectOne}"
+                                           var="groupeItem"
+                                           itemValue="#{groupeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_droit}" for="droit" />
+                        <p:inputText id="droit" value="#{publicationController.selected.droit}" title="#{bundle.EditPublicationTitle_droit}" />
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_dateSuppression}" for="dateSuppression" />
+                        <p:calendar id="dateSuppression" pattern="MM/dd/yyyy" value="#{publicationController.selected.dateSuppression}" title="#{bundle.EditPublicationTitle_dateSuppression}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_dateModification}" for="dateModification" />
+                        <p:calendar id="dateModification" pattern="MM/dd/yyyy" value="#{publicationController.selected.dateModification}" title="#{bundle.EditPublicationTitle_dateModification}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{publicationController.selected.code}" title="#{bundle.EditPublicationTitle_code}" />
+                        <p:outputLabel value="#{bundle.EditPublicationLabel_returnBack}" for="returnBack" />
+                        <p:selectBooleanCheckbox id="returnBack" value="#{publicationController.selected.returnBack}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{publicationController.update}" value="#{bundle.Save}" update="display,:PublicationListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PublicationEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PublicationEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

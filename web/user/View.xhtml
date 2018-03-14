@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserViewDlg" widgetVar="UserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUserTitle}">
+            <h:form id="UserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{userController.selected != null}">
+                        <h:outputText value="#{bundle.ViewUserLabel_login}"/>
+                        <h:outputText value="#{userController.selected.login}" title="#{bundle.ViewUserTitle_login}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_password}"/>
+                        <h:outputText value="#{userController.selected.password}" title="#{bundle.ViewUserTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_nom}"/>
+                        <h:outputText value="#{userController.selected.nom}" title="#{bundle.ViewUserTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_prenom}"/>
+                        <h:outputText value="#{userController.selected.prenom}" title="#{bundle.ViewUserTitle_prenom}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_telephone}"/>
+                        <h:outputText value="#{userController.selected.telephone}" title="#{bundle.ViewUserTitle_telephone}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_sexe}"/>
+                        <h:outputText value="#{userController.selected.sexe}" title="#{bundle.ViewUserTitle_sexe}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_dateNaissance}"/>
+                        <h:outputText value="#{userController.selected.dateNaissance}" title="#{bundle.ViewUserTitle_dateNaissance}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUserLabel_timer}"/>
+                        <h:outputText value="#{userController.selected.timer}" title="#{bundle.ViewUserTitle_timer}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_dateSuppression}"/>
+                        <h:outputText value="#{userController.selected.dateSuppression}" title="#{bundle.ViewUserTitle_dateSuppression}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUserLabel_dateModification}"/>
+                        <h:outputText value="#{userController.selected.dateModification}" title="#{bundle.ViewUserTitle_dateModification}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUserLabel_code}"/>
+                        <h:outputText value="#{userController.selected.code}" title="#{bundle.ViewUserTitle_code}"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_stop}"/>
+                        <p:selectBooleanCheckbox value="#{userController.selected.stop}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_adminatrateur}"/>
+                        <p:selectBooleanCheckbox value="#{userController.selected.adminatrateur}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_droit}"/>
+                        <p:selectBooleanCheckbox value="#{userController.selected.droit}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_active}"/>
+                        <p:selectBooleanCheckbox value="#{userController.selected.active}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewUserLabel_lieu}"/>
+                        <h:outputText value="#{userController.selected.lieu}" title="#{bundle.ViewUserTitle_lieu}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

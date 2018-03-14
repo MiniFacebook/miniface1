@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GroupeCreateDlg" widgetVar="GroupeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateGroupeTitle}">
+            <h:form id="GroupeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{groupeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_dateSuppression}" for="dateSuppression" />
+                        <p:calendar id="dateSuppression" pattern="MM/dd/yyyy" value="#{groupeController.selected.dateSuppression}" title="#{bundle.EditGroupeTitle_dateSuppression}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_dateModification}" for="dateModification" />
+                        <p:calendar id="dateModification" pattern="MM/dd/yyyy" value="#{groupeController.selected.dateModification}" title="#{bundle.EditGroupeTitle_dateModification}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{groupeController.selected.code}" title="#{bundle.CreateGroupeTitle_code}" />
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_returnBack}" for="returnBack" />
+                        <p:selectBooleanCheckbox id="returnBack" value="#{groupeController.selected.returnBack}" />
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{groupeController.selected.nom}" title="#{bundle.CreateGroupeTitle_nom}" />
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_etat}" for="etat" />
+                        <p:inputText id="etat" value="#{groupeController.selected.etat}" title="#{bundle.CreateGroupeTitle_etat}" />
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{groupeController.selected.type}" title="#{bundle.CreateGroupeTitle_type}" />
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_dateCreation}" for="dateCreation" />
+                        <p:calendar id="dateCreation" pattern="MM/dd/yyyy" value="#{groupeController.selected.dateCreation}" title="#{bundle.EditGroupeTitle_dateCreation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_admin}" for="admin" />
+                        <p:selectOneMenu id="admin" value="#{groupeController.selected.admin}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="adminItem"
+                                           itemValue="#{adminItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateGroupeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{groupeController.selected.id}" title="#{bundle.CreateGroupeTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{groupeController.create}" value="#{bundle.Save}" update="display,:GroupeListForm:datalist,:growl" oncomplete="handleSubmit(args,'GroupeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GroupeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

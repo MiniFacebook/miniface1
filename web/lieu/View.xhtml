@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LieuViewDlg" widgetVar="LieuViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLieuTitle}">
+            <h:form id="LieuViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lieuController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLieuLabel_adresse}"/>
+                        <h:outputText value="#{lieuController.selected.adresse}" title="#{bundle.ViewLieuTitle_adresse}"/>
+                        <h:outputText value="#{bundle.ViewLieuLabel_ville}"/>
+                        <h:outputText value="#{lieuController.selected.ville}" title="#{bundle.ViewLieuTitle_ville}"/>
+                        <h:outputText value="#{bundle.ViewLieuLabel_villeOrigine}"/>
+                        <h:outputText value="#{lieuController.selected.villeOrigine}" title="#{bundle.ViewLieuTitle_villeOrigine}"/>
+                        <h:outputText value="#{bundle.ViewLieuLabel_id}"/>
+                        <h:outputText value="#{lieuController.selected.id}" title="#{bundle.ViewLieuTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LieuViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

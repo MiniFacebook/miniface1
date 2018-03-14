@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InvitationCreateDlg" widgetVar="InvitationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInvitationTitle}">
+            <h:form id="InvitationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{invitationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_bloquer}" for="bloquer" />
+                        <p:selectBooleanCheckbox id="bloquer" value="#{invitationController.selected.bloquer}" />
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_rejeter}" for="rejeter" />
+                        <p:selectBooleanCheckbox id="rejeter" value="#{invitationController.selected.rejeter}" />
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_amisProche}" for="amisProche" />
+                        <p:selectBooleanCheckbox id="amisProche" value="#{invitationController.selected.amisProche}" />
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_retirer}" for="retirer" />
+                        <p:selectBooleanCheckbox id="retirer" value="#{invitationController.selected.retirer}" />
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_groupe}" for="groupe" />
+                        <p:selectOneMenu id="groupe" value="#{invitationController.selected.groupe}" >
+                            <f:selectItems value="#{groupeController.itemsAvailableSelectOne}"
+                                           var="groupeItem"
+                                           itemValue="#{groupeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{invitationController.selected.type}" title="#{bundle.CreateInvitationTitle_type}" />
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_dateEnvoi}" for="dateEnvoi" />
+                        <p:calendar id="dateEnvoi" pattern="MM/dd/yyyy" value="#{invitationController.selected.dateEnvoi}" title="#{bundle.EditInvitationTitle_dateEnvoi}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_dateAcceptation}" for="dateAcceptation" />
+                        <p:calendar id="dateAcceptation" pattern="MM/dd/yyyy" value="#{invitationController.selected.dateAcceptation}" title="#{bundle.EditInvitationTitle_dateAcceptation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_recepteur}" for="recepteur" />
+                        <p:selectOneMenu id="recepteur" value="#{invitationController.selected.recepteur}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="recepteurItem"
+                                           itemValue="#{recepteurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_emetteur}" for="emetteur" />
+                        <p:selectOneMenu id="emetteur" value="#{invitationController.selected.emetteur}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="emetteurItem"
+                                           itemValue="#{emetteurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateInvitationLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{invitationController.selected.id}" title="#{bundle.CreateInvitationTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{invitationController.create}" value="#{bundle.Save}" update="display,:InvitationListForm:datalist,:growl" oncomplete="handleSubmit(args,'InvitationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InvitationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

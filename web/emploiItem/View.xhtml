@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmploiItemViewDlg" widgetVar="EmploiItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEmploiItemTitle}">
+            <h:form id="EmploiItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{emploiItemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEmploiItemLabel_dateDebut}"/>
+                        <h:outputText value="#{emploiItemController.selected.dateDebut}" title="#{bundle.ViewEmploiItemTitle_dateDebut}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEmploiItemLabel_dateFin}"/>
+                        <h:outputText value="#{emploiItemController.selected.dateFin}" title="#{bundle.ViewEmploiItemTitle_dateFin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEmploiItemLabel_user}"/>
+                        <h:outputText value="#{emploiItemController.selected.user}" title="#{bundle.ViewEmploiItemTitle_user}"/>
+                        <h:outputText value="#{bundle.ViewEmploiItemLabel_emploi}"/>
+                        <h:outputText value="#{emploiItemController.selected.emploi}" title="#{bundle.ViewEmploiItemTitle_emploi}"/>
+                        <h:outputText value="#{bundle.ViewEmploiItemLabel_id}"/>
+                        <h:outputText value="#{emploiItemController.selected.id}" title="#{bundle.ViewEmploiItemTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EmploiItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
