@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MINI FACEBOOK</title>
+   
+    </h:head>
+    <h:body>
+         <ui:include src="Header.xhtml"/>
+        <ui:include src="SideBarGroup.xhtml"/>
+        <ui:include src="Head.xhtml"/>
+        <ui:include src="jsBar.xhtml"/>
+        <ui:include src="jsFilActualite.xhtml"/>
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+                <h3><i class="fa fa-angle-right" /> Paramétres du groupe </h3>
+
+                <div class="row mt">
+
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                    </div>
+
+                    <div class="col-lg-10">
+                        <a />
+                        <div class="showback "><a>
+                            </a><form><a>         
+                                </a>
+                                <p class="centered"><a> <label class=" control-label "> </label></a><a href="#"><img src="../resources/img/smallgroup.png" width="100" alt="" /></a> <input type="file" name="editPhotoProfilGroupe" value="Edit" /></p> <br />
+
+                                <div class="form-group">
+                                    <label class=" control-label"> Nom du groupe</label>
+
+                                    <input type="text" class="form-control round-form" value="Nom Groupe" />
+                                </div> 
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Type </label>
+
+                                    <input type="text" class="form-control round-form" value="Education" />
+
+                                </div>
+
+                                <p class="centered"> <label class="control-label "> <a href="#"><img src="../resources/img/lorde.jpg" width="340" alt="" /></a><br /><br /> <input type="file" name="editPhotoBackgroundGroupe" value="Edit" /></label></p> <br />
+
+
+                                <div class="btn-group">
+
+                                    <label class=" control-label">Etat </label>
+                                    <a class="btn btn-warning btn-select btn-select-light">
+                                        <input type="hidden" class="btn-select-input" id="" name="" value="" />
+                                        <span class="btn-select-value">Select an Item</span>
+                                        <span class="btn-select-arrow glyphicon glyphicon-chevron-down" />
+
+                                        <ul>
+
+                                            <li><b>Priver</b>:Tout le monde peut trouver le groupe et en voir les membres. Seuls les membres peuvent voir les publications </li>
+
+                                            <li><b>Publique</b>: Tout le monde peut voir le groupe, ses membres et leurs publications.</li>
+
+                                            <li><b>Secret</b>:Seuls les membres peuvent trouver le groupe et voir les publications</li>
+
+                                        </ul>
+                                    </a><br /><br />
+                                    <button type="button" class="btn btn-default btn-theme btn-lg btn-block " name="creegroupe">Enregistrer les modifications</button>
+
+                                </div></form></div></div></div>
+
+
+            </section><!-- __/wrapper __-->
+        </section><!-- /MAIN CONTENT -->
+        
+            
+            
+    </h:body>
+</html>
+

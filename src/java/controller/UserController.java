@@ -3,6 +3,7 @@ package controller;
 import bean.User;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
+import controller.util.SessionUtil;
 import service.UserFacade;
 
 import java.io.Serializable;
@@ -32,7 +33,7 @@ public class UserController implements Serializable {
     }
 
     public User getSelected() {
-         if (selected == null) {
+        if (selected == null) {
             selected = new User();
         }
         return selected;
@@ -58,6 +59,14 @@ public class UserController implements Serializable {
         return selected;
     }
 
+     public void save() {
+        ejbFacade.saveMethode(selected);
+        selected= null;
+
+    }
+    
+    
+    
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
         if (!JsfUtil.isValidationFailed()) {
@@ -77,7 +86,22 @@ public class UserController implements Serializable {
         }
     }
 
+    public String seConnecter() {
+
+        int res = ejbFacade.ceConnecter(selected);
+        if (res > 0) {
+            SessionUtil.setAttribute("connecttedUser", ejbFacade.find(selected.getLogin()));
+            JsfUtil.addSuccessMessage("connexion avec success");
+            return "/publication/List";
+        } else {
+            JsfUtil.addErrorMessage("votre login ou votre mot de passe est incorrecte");
+            return null;
+        }
+
+    }
+
     public List<User> getItems() {
+
         if (items == null) {
             items = getFacade().findAll();
         }

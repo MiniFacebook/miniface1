@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MINI FACEBOOK</title>
+
+    </h:head>
+    <h:body>
+        
+        
+           <script type="text/javascript" src="../resources/js/jquery.js"></script>
+           <script>
+      	$(function(){
+      		$(".com").click(function(){
+      			if($(".comment").is(":hidden"))
+      				$(".comment").show();
+      			else
+      				$(".comment").hide();	
+      		});
+      		$(".btmcom").click(function(){
+      			$(".comment").hide();
+      		});	
+      	});
+      	function affiche1(){
+      		$(".zonemodif").show();
+      		$(".contenu1").hide();
+      		$(".texte1").val($(".contenu1").html());
+      		$(".like").hide();
+      	}
+      	function changer1() {
+      		$(".contenu1").text($(".texte1").val());
+      		$(".contenu1").show();
+      		$(".zonemodif").hide();
+      		$(".like").show();
+      		
+      	}
+      	function cancel1(){
+      		$(".contenu1").text($(".contenu1").text());
+      		$(".like").show();
+      		$(".contenu1").show();
+      		$(".zonemodif").hide();
+      	}
+      	function affiche2(){
+      		$(".zonemodif").show();
+      		$(".contenu2").hide();
+      		$(".texte2").val($(".contenu2").html());
+      		$(".like").hide();
+      	}
+      	function changer2() {
+      		$(".contenu2").text($(".texte2").val());
+      		$(".contenu2").show();
+      		$(".zonemodif").hide();
+      		$(".like").show();
+      		
+      	}
+      	function cancel2(){
+      		$(".contenu2").text($(".contenu2").text());
+      		$(".like").show();
+      		$(".contenu2").show();
+      		$(".zonemodif").hide();
+      	}	
+      	function afficherPop(){
+      		myModal.style.display = "block";
+      		$("#textM").val($("#statut").html());
+      	}
+      	function modifierPub(){
+      		$("#statut").text($("#textM").val());
+      		myModal.style.display = "none";
+      	}
+      	function fermer(){
+      		
+      		myModal.style.display = "none";
+      	}
+      	
+      </script>
+      
+      
+    </h:body>
+</html>
+

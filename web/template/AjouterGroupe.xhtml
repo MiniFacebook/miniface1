@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MINI FACEBOOK</title>
+
+    </h:head>
+    <h:body>
+          <ui:include src="Header.xhtml"/>
+        <ui:include src="SideBarGroup.xhtml"/>
+        <ui:include src="Head.xhtml"/>
+        <ui:include src="jsBar.xhtml"/>
+        <ui:include src="jsFilActualite.xhtml"/>
+
+        <section id="main-content">
+            <section class="wrapper">
+
+                <h3><i class="fa fa-angle-right" /> Ajouter Groupe</h3>
+
+                <div class="row mt">
+
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                    </div>
+
+                    <div class="col-lg-10">
+
+                        <div class="showback ">
+
+                            <p bgcolor="black-bg"> Les groupes sont très pratiques pour travailler ensemble et rester en contact avec les personnes de votre choix. Partagez des photos et des vidéos, participez à des conversations, faites des projets et plus encore. </p>
+                            <form>         
+
+                                <div class="centered">
+                                    Photo profil
+
+
+                                    <p> <label class=" control-label centered "> <a href="#"><img src="../resources/img/user.png" class="img-circle" width="60" alt="" /></a> <input type="file" name="editPhotoGroupe" value="Edit" /></label></p> <br />
+                                </div>
+
+                                <div class="form-group centered">
+                                    <label class=" control-label"> Nom du groupe</label>
+
+                                    <input type="text" class="form-control round-form" />
+                                </div> 
+
+                                <div class="form-group centered">
+                                    <label class=" control-label">Etat </label>
+
+                                    <input type="text" class="form-control round-form" />
+                                    La photo de background
+                                </div>
+
+                                <p class="centered"> <label class="control-label "> <a href="#"><img src="../resources/img/background.jpg" height="100" width="340" alt="" /></a><br /><br /> <input type="file" name="editPhotoBackgroundGroupe" value="Edit" /></label></p> <br />
+
+                                <div class="btn-group">
+
+
+                                    <a class="btn btn-warning btn-select btn-select-light">
+                                        <input type="hidden" class="btn-select-input" id="" name="" value="" />
+                                        <span class="btn-select-value">Select an Item</span>
+                                        <span class="btn-select-arrow glyphicon glyphicon-chevron-down" />
+
+                                        <ul>
+
+                                            <li>Priver:Tout le monde peut trouver le groupe et en voir les membres. Seuls les membres peuvent voir les publications </li>
+
+                                            <li>Publique: Tout le monde peut voir le groupe, ses membres et leurs publications.</li>
+
+                                            <li>Secret:Seuls les membres peuvent trouver le groupe et voir les publications</li>
+
+                                        </ul>
+                                    </a><br /><br />
+                                    <button type="button" class="btn btn-default btn-theme btn-lg  centred " name="creegroupe"> Creer votre propre groupe</button>
+
+                                </div></form></div></div></div>
+
+                <!--******************** end of ajouer groupe***********-->
+
+
+            </section><!-- __/wrapper __-->
+        </section><!-- /MAIN CONTENT -->
+
+
+
+
+    </h:body>
+</html>
+

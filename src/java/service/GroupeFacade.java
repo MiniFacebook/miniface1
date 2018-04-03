@@ -6,6 +6,10 @@
 package service;
 
 import bean.Groupe;
+import bean.GroupeItem;
+import bean.User;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +32,14 @@ public class GroupeFacade extends AbstractFacade<Groupe> {
     public GroupeFacade() {
         super(Groupe.class);
     }
-    
+
+    public List<User> GetMembers(Groupe groupe) {
+
+        List<User> members = new ArrayList<>();
+        List<GroupeItem> groupeItems = groupe.getGroupeItems();
+        for (GroupeItem groupeItem : groupeItems) {
+            members.add(groupeItem.getDemandeur());
+        }
+        return members;
+    }
 }

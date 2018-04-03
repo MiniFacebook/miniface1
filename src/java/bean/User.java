@@ -33,6 +33,7 @@ public class User implements Serializable {
     private String prenom;
     private String telephone;
     private String sexe;
+    private String intro;
     private Boolean active;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateNaissance;
@@ -141,6 +142,14 @@ public class User implements Serializable {
 
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 
     public Double getTimer() {
@@ -372,7 +381,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" + "login=" + login + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone + ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", timer=" + timer + ", dateSuppression=" + dateSuppression + ", dateModification=" + dateModification + ", code=" + code + ", returnBack=" + stop + ", adminatrateur=" + adminatrateur + ", manager=" +", droit"+droit +", active"+active+ '}';
+        return "User{" + "login=" + login + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone + ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", timer=" + timer + ", dateSuppression=" + dateSuppression + ", dateModification=" + dateModification + ", code=" + code + ", returnBack=" + stop + ", adminatrateur=" + adminatrateur + ", manager=" +", droit"+droit +", active"+active+ ", intro"+intro+ '}';
     }
 
     

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MINI FACEBOOK</title>
+
+    </h:head>
+    <h:body>
+        
+    
+           <ui:include src="jsBar.xhtml"/>
+              
+
+
+        <aside>
+
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+
+                <ul class="sidebar-menu" id="nav-accordion">
+
+
+                    <p class="centered"><a href="profil.html"><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /></a></p>
+                    <a href="Profil.xhtml">
+                        <h5 class="centered">UserName</h5></a>
+
+
+                    <li class="mt">
+                        <a class="active" href="filActualite.html">
+                            <i class="glyphicon glyphicon-home" />
+                            <span>Acceuil</span>
+                        </a>
+                    </li>
+
+                    <li class="mt">
+                        <a href="Chat.xhtml">
+                            <i class="fa fa-envelope-o" />
+                            <span>Chat</span>
+                        </a>
+                    </li>
+
+                    <li class="mt">
+                        <a href="Amis.xhtml">
+                            <i class="glyphicon glyphicon-user" />
+                            <span>Amis</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+
+                    </li>
+                    <li class="mt">
+                        <a href="index.html">
+                            <i class="fa fa-group" />
+                            <span>Groupes</span></a>
+
+                        <ul> 
+
+                            <li> <a href="GroupeFil.xhtml">Mon Groupe </a></li>
+
+                            <li><a href="List-Groupe.xhtml">Ma liste de groupes</a></li>
+
+                            <li> <a href="AjouterGroupe.xhtml">Ajouter Groupe </a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+
+                <div class="centered">							
+                    <button id="heure" />
+                    <button id="min" />
+                    <button id="sec" />
+                </div>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+
+    </h:body>
+</html>
+

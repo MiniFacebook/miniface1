@@ -10,11 +10,38 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author lenovo
+ * @author
  */
 public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
+
+    public Long generate(String beanName, String attributeName) {
+        String requete = "SELECT max(item." + attributeName + ") FROM " + beanName + " item";
+        List<Long> maxId = getEntityManager().createQuery(requete).getResultList();
+        if (maxId == null || maxId.isEmpty() || maxId.get(0) == null) {
+            return 1L;
+        }
+        return maxId.get(0) + 1;
+    }
+
+    public T getUniqueResult(String query) {
+        List<T> list = getEntityManager().createQuery(query).getResultList();
+        if (list != null && list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
+
+    }
+
+    public List<T> getMultipleResult(String query) {
+        List<T> list = getEntityManager().createQuery(query).getResultList();
+        if (list != null && list.size() > 0) {
+            return list;
+        }
+        return null;
+
+    }
 
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -60,5 +87,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }
