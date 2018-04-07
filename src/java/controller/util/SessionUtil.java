@@ -1,8 +1,10 @@
 package controller.util;
 
-
 import bean.User;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -12,10 +14,22 @@ public class SessionUtil {
 
     private SessionUtil() {
     }
+    private static List<User> users = new ArrayList<>();
 
     public static void registerUser(User user) {
         //clone user before
         setAttribute("user", user);
+        if (isConnected(user) == true) {
+            users.add(user);
+        }
+    }
+
+    private static boolean isConnected(User user) {
+        Optional<User> u = users.stream().filter(x -> x.getLogin().equals(user.getLogin())).findFirst();
+        if (u == null) {
+            return false;
+        }
+        return true;
     }
 
     public static User getConnectedUser() {

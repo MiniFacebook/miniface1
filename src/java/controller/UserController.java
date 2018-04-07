@@ -15,6 +15,7 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -22,6 +23,7 @@ import javax.faces.convert.FacesConverter;
 
 @Named("userController")
 @SessionScoped
+@ViewScoped
 public class UserController implements Serializable {
 
     @EJB
@@ -92,7 +94,7 @@ public class UserController implements Serializable {
         if (res > 0) {
             SessionUtil.setAttribute("connecttedUser", ejbFacade.find(selected.getLogin()));
             JsfUtil.addSuccessMessage("connexion avec success");
-            return "/publication/List";
+            return "/template/GroupeFil";
         } else {
             JsfUtil.addErrorMessage("votre login ou votre mot de passe est incorrecte");
             return null;

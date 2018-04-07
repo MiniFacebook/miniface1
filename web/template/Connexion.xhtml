@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MINI FACEBOOK</title>
+
+    </h:head>
+    <h:body>
+
+
+        <ui:include src="Head.xhtml"/>
+        <ui:include src="jsBar.xhtml"/>
+
+
+
+        <header class="header black-bg">
+
+            <div class="sidebar-toggle-box">
+
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation" />
+            </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>Mini Facebook</b></a>
+            <!--logo end-->
+
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+
+                <!--  notification end -->
+            </div>
+
+            <div class="top-menu">
+               <h:form class="form-inline pull-right" role="form" style="margin-right: 30px;">
+
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                        <input type="email" style="border-radius: 20px;" class="form-control" id="exampleInputEmail2" placeholder="Enter email" />
+                    </div>
+
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                        <input type="password" style="border-radius: 20px;" class="form-control" id="exampleInputPassword2" placeholder="Password" />
+                    </div>
+
+                    <div class="form-group" style="margin-top: 15px;">
+                        <span><button type="button" id="clock" title="Controler la durée de votre connexion" class="btn btn-theme"><i class="fa fa-clock-o" /></button></span>
+                        <span id="temps" hidden=""><input type="time" style="border-radius: 10px; height: 34px;" /></span>
+                    </div>
+                    <a >
+                        <p:commandButton   id="seConncter" type="submit" style="margin-top: 15px;" class="btn btn-theme" process="@this" action="#{userController.seConnecter()}" value="Se Connecter"></p:commandButton></a>
+               </h:form>
+            </div>
+        </header>
+        <!--header end-->
+
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+
+        <!--sidebar end-->
+
+
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <section>
+
+
+            <div id="backI">
+                <form>
+
+
+                    <div class="row mt" style="margin-top: 30px;">
+
+                        <div class="col-lg-3">
+                        </div>
+
+                        <div class="col-lg-6 " style="margin-top: 30px;">
+
+
+                            <div class="showback" style="margin-top: 90px; border-radius: 10px;">
+
+                                <div style="margin-bottom: 30px;">
+                                    <b>
+                                        <h1> <center>Creer Un nouveau Compte</center></h1></b>
+                                </div>
+                                <input type="text" class="round-form" style="width: 45%; height: 35px; margin-left: 20px;" value="  Nom" /><input type="text" class=" round-form" style="width: 45%; height: 35px; margin-left: 40px;" value=" Prenom" />
+                                <input type="text" class="round-form" style="width: 96%; height: 35px; margin-top: 30px; margin-left: 20px; margin-right: 10px;" value="  Email" />
+                                <input type="password" class="round-form" style="width: 96%; height: 35px; margin-top: 30px; margin-left: 20px; margin-right: 10px;" value="  PassWord" />
+
+                                <div class="radio">
+
+                                    <label style="margin-left: 200px; margin-top: 30px;">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked" />
+                                        Feminin
+                                    </label>
+
+                                    <label style="margin-left: 150px; margin-top: 30px;">
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+                                        Masculin
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label style="margin-left: 20px; margin-top: 30px;" for="party">Date de Naissance</label>  :
+                                    <input style="border-radius: 8px;" type="date" id="party" name="nasance" />
+                                </div>
+
+                                <div>
+                                    <center><button type="submit" style="width: 80%; height: 60px; margin-top: 30px;" class="btn btn-theme">Creer Compte</button><center>
+                                        </center></center></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+
+            <div class="text-center">
+                Mini-Facebook
+                <a href="general.html#" class="go-top">
+                    <i class="fa fa-angle-up" />
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+
+    </h:body>
+</html>
+

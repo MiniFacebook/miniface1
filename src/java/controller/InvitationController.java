@@ -1,8 +1,10 @@
 package controller;
 
 import bean.Invitation;
+import bean.User;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
+import controller.util.SessionUtil;
 import service.InvitationFacade;
 
 import java.io.Serializable;
@@ -27,7 +29,7 @@ public class InvitationController implements Serializable {
     private service.InvitationFacade ejbFacade;
     private List<Invitation> items = null;
     private Invitation selected;
-
+   
     public InvitationController() {
     }
 
@@ -80,6 +82,12 @@ public class InvitationController implements Serializable {
     public List<Invitation> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+        }
+        return items;
+    }
+    public List<Invitation> getItemsByUser() {
+        if (items == null) {
+           
         }
         return items;
     }
