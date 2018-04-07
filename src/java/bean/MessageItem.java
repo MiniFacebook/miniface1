@@ -20,10 +20,12 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class MessageItem implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Boolean vu;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateLecture;
     @ManyToOne
@@ -70,6 +72,14 @@ public class MessageItem implements Serializable {
         this.id = id;
     }
 
+    public Boolean getVu() {
+        return vu;
+    }
+
+    public void setVu(Boolean vu) {
+        this.vu = vu;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -95,6 +105,4 @@ public class MessageItem implements Serializable {
         return "MessageItem{" + "id=" + id + ", dateLecture=" + dateLecture + '}';
     }
 
-   
-    
 }

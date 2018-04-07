@@ -27,13 +27,14 @@ public class SignalPublication implements Serializable {
     private Long id;
     private String cause;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateSignal ;
+    private Date dateSignal;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateSupression;
     @ManyToOne
     private User userAction;
     @ManyToOne
     private Publication publicationSignale;
+    private Boolean vu;
 
     public SignalPublication() {
     }
@@ -41,9 +42,7 @@ public class SignalPublication implements Serializable {
     public SignalPublication(Long id) {
         this.id = id;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -91,7 +90,14 @@ public class SignalPublication implements Serializable {
     public void setPublicationSignale(Publication publicationSignale) {
         this.publicationSignale = publicationSignale;
     }
-    
+
+    public Boolean getVu() {
+        return vu;
+    }
+
+    public void setVu(Boolean vu) {
+        this.vu = vu;
+    }
 
     @Override
     public int hashCode() {
@@ -118,6 +124,4 @@ public class SignalPublication implements Serializable {
         return "SignalPublication{" + "id=" + id + ", cause=" + cause + ", dateSignal=" + dateSignal + ", dateSupression=" + dateSupression + '}';
     }
 
-    
-    
 }

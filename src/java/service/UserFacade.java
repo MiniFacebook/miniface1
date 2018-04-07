@@ -13,9 +13,12 @@ import bean.EtablissementItem;
 import bean.Groupe;
 import bean.GroupeItem;
 import bean.Invitation;
+import bean.SignalPublication;
+import bean.SignalUser;
 import bean.User;
 import controler.util.HashageUtil;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -208,5 +211,42 @@ public class UserFacade extends AbstractFacade<User> {
 
         }
         return res;
+    }
+     SignalUserFacade signalUserFacade;
+    SignalPublicationFacade signalPublicationFacade;
+   
+    public List<SignalUser> userSignales() {
+        List<SignalUser> SignalUsers = signalUserFacade.listeSignalesAdmin();
+        List<SignalUser> usersSignales = new ArrayList<>();
+        long nbrSignale = 0;
+        for (SignalUser usersSignale : SignalUsers) {
+            nbrSignale = signalUserFacade.nombreSignale(usersSignale.getUserSignale());
+            if (nbrSignale > 25) {
+                usersSignale.setDateSupression(new Date());
+                signalUserFacade.edit(usersSignale);
+                 usersSignale.getUserSignale().setDateSuppression(new Date());
+                edit( usersSignale.getUserSignale());
+            } else {
+                usersSignales.add(usersSignale);
+            }
+        }
+        return usersSignales;
+    }
+    
+
+     public List<SignalPublication> publicationSignales() {
+        List<SignalPublication> SignalPublications = signalPublicationFacade.publicationSignaler();
+        List<SignalPublication> pubSignales = new ArrayList<>();
+        long nbrSignale = 0;
+        for (SignalPublication signalPublication : SignalPublications) {
+            nbrSignale = signalPublicationFacade.nombreSignale(signalPublication.getPublicationSignale());
+            if (nbrSignale > 25) {
+                signalPublication.setDateSupression(new Date());
+                signalPublicationFacade.edit(signalPublication);
+            } else {
+                pubSignales.add(signalPublication);
+            }
+        }
+        return pubSignales;
     }
 }

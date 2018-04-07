@@ -21,6 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Invitation implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +30,7 @@ public class Invitation implements Serializable {
     private Boolean retirer;
     private Boolean rejeter;
     private Boolean amisProche;
+    private Boolean vu;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateEnvoi;
     private Boolean Bloquer;
@@ -38,7 +40,7 @@ public class Invitation implements Serializable {
     private User recepteur;
     @OneToOne
     private User emetteur;
-    
+
     @ManyToOne
     private Groupe groupe;
 
@@ -128,8 +130,6 @@ public class Invitation implements Serializable {
     public void setEmetteur(User emetteur) {
         this.emetteur = emetteur;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -137,6 +137,14 @@ public class Invitation implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Boolean getVu() {
+        return vu;
+    }
+
+    public void setVu(Boolean vu) {
+        this.vu = vu;
     }
 
     @Override
@@ -164,7 +172,4 @@ public class Invitation implements Serializable {
         return "Invitation{" + "id=" + id + ", type=" + type + ", dateEnvoi=" + dateEnvoi + ", dateAcceptation=" + dateAcceptation + '}';
     }
 
-   
-    
-    
 }

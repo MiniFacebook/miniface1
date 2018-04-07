@@ -5,7 +5,9 @@
  */
 package service;
 
+import bean.Publication;
 import bean.SignalPublication;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,12 @@ public class SignalPublicationFacade extends AbstractFacade<SignalPublication> {
     public SignalPublicationFacade() {
         super(SignalPublication.class);
     }
-    
+     public List<SignalPublication> publicationSignaler() {
+        return getMultipleResult("SELECT s FROM SignalPublication s WHERE s.dateSupression<>'null' ORDER BY s.dateSignal");
+    }
+
+    public long nombreSignale(Publication publication) {
+        return em.createQuery("SELECT s FROM SignalPublication s WHERE s.publicationSignale.id" + publication.getId() + "' ").getResultList().size();
+
+    }
 }

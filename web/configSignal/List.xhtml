@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConfigSignalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConfigSignalEmpty}" rendered="#{configSignalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{configSignalController.items.rowCount > 0}">
+                    <h:outputText value="#{configSignalController.pagination.pageFirstItem + 1}..#{configSignalController.pagination.pageLastItem + 1}/#{configSignalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{configSignalController.previous}" value="#{bundle.Previous} #{configSignalController.pagination.pageSize}" rendered="#{configSignalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{configSignalController.next}" value="#{bundle.Next} #{configSignalController.pagination.pageSize}" rendered="#{configSignalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{configSignalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConfigSignalTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConfigSignalTitle_maxPublication}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.maxPublication}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConfigSignalTitle_minPublication}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minPublication}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConfigSignalTitle_maxUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.maxUser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConfigSignalTitle_minUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minUser}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{configSignalController.prepareView}" value="#{bundle.ListConfigSignalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{configSignalController.prepareEdit}" value="#{bundle.ListConfigSignalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{configSignalController.destroy}" value="#{bundle.ListConfigSignalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{configSignalController.prepareCreate}" value="#{bundle.ListConfigSignalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListConfigSignalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

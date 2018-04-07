@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewConfigSignalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewConfigSignalLabel_id}"/>
+                    <h:outputText value="#{configSignalController.selected.id}" title="#{bundle.ViewConfigSignalTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewConfigSignalLabel_maxPublication}"/>
+                    <h:outputText value="#{configSignalController.selected.maxPublication}" title="#{bundle.ViewConfigSignalTitle_maxPublication}"/>
+                    <h:outputText value="#{bundle.ViewConfigSignalLabel_minPublication}"/>
+                    <h:outputText value="#{configSignalController.selected.minPublication}" title="#{bundle.ViewConfigSignalTitle_minPublication}"/>
+                    <h:outputText value="#{bundle.ViewConfigSignalLabel_maxUser}"/>
+                    <h:outputText value="#{configSignalController.selected.maxUser}" title="#{bundle.ViewConfigSignalTitle_maxUser}"/>
+                    <h:outputText value="#{bundle.ViewConfigSignalLabel_minUser}"/>
+                    <h:outputText value="#{configSignalController.selected.minUser}" title="#{bundle.ViewConfigSignalTitle_minUser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{configSignalController.destroyAndView}" value="#{bundle.ViewConfigSignalDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewConfigSignalEditLink}"/>
+                <br />
+                <h:commandLink action="#{configSignalController.prepareCreate}" value="#{bundle.ViewConfigSignalCreateLink}" />
+                <br />
+                <h:commandLink action="#{configSignalController.prepareList}" value="#{bundle.ViewConfigSignalShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewConfigSignalIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
