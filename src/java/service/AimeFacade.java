@@ -6,6 +6,9 @@
 package service;
 
 import bean.Aime;
+import bean.Publication;
+import bean.User;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +32,13 @@ public class AimeFacade extends AbstractFacade<Aime> {
         super(Aime.class);
     }
     
+    
+    public void saveLike(Publication publication){
+        Aime aime= new Aime();
+        aime.setPublication(publication);
+        aime.setDateAime(new Date());
+        aime.setLiker(new User("safia"));
+        create(aime);
+    }
+
 }

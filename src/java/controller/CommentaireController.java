@@ -57,7 +57,10 @@ public class CommentaireController implements Serializable {
         initializeEmbeddableKey();
         return selected;
     }
-
+    public void addComm(){
+        ejbFacade.enrigstrer(selected);
+        selected =null;
+    }
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("CommentaireCreated"));
         if (!JsfUtil.isValidationFailed()) {

@@ -87,21 +87,18 @@ public class UserController implements Serializable {
     }
 
     public String seConnecter() {
-
-        int res = ejbFacade.ceConnecter(selected);
+        int res = ejbFacade.seConnecter(selected);
         if (res > 0) {
-            SessionUtil.setAttribute("connecttedUser", ejbFacade.find(selected.getLogin()));
-            JsfUtil.addSuccessMessage("connexion avec success");
-            return "/publication/List";
+            SessionUtil.setAttribute("connectedUser",selected);
+            JsfUtil.addSuccessMessage("ConnexionReussi");
+            selected = null;
+            return "/template/filActualite";
         } else {
-            JsfUtil.addErrorMessage("votre login ou votre mot de passe est incorrecte");
             return null;
         }
-
     }
 
     public List<User> getItems() {
-
         if (items == null) {
             items = getFacade().findAll();
         }
