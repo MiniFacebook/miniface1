@@ -21,10 +21,6 @@ import javax.persistence.Temporal;
 @Entity
 public class User implements Serializable {
 
-   
-
-    
-
     private static final long serialVersionUID = 1L;
     @Id
     private String login;
@@ -42,10 +38,12 @@ public class User implements Serializable {
     private Date dateSuppression;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateModification;
-    private Long code; 
+    private Long code;
     private Boolean stop;
     private Boolean adminatrateur;
     private Boolean droit;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateCreation;
     @ManyToOne
     private Lieu lieu;
     @OneToMany(mappedBy = "concerne")
@@ -215,7 +213,6 @@ public class User implements Serializable {
     public void setActive(Boolean active) {
         this.active = active;
     }
-    
 
     public Lieu getLieu() {
         return lieu;
@@ -352,13 +349,15 @@ public class User implements Serializable {
     public void setSignalPublications(List<SignalPublication> signalPublications) {
         this.signalPublications = signalPublications;
     }
-   
 
-   
+    public Date getDateCreation() {
+        return dateCreation;
+    }
 
-    
-    
-    
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -381,13 +380,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" + "login=" + login + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone + ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + ", timer=" + timer + ", dateSuppression=" + dateSuppression + ", dateModification=" + dateModification + ", code=" + code + ", returnBack=" + stop + ", adminatrateur=" + adminatrateur + ", manager=" +", droit"+droit +", active"+active+ ", intro"+intro+ '}';
+        return "User{" + "login=" + login + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone + ", sexe=" + sexe + ", intro=" + intro + ", active=" + active + ", dateNaissance=" + dateNaissance + ", timer=" + timer + ", dateSuppression=" + dateSuppression + ", dateModification=" + dateModification + ", code=" + code + ", stop=" + stop + ", adminatrateur=" + adminatrateur + ", droit=" + droit + ", dateCreation=" + dateCreation + '}';
     }
 
-    
-
-   
-
-   
-    
 }

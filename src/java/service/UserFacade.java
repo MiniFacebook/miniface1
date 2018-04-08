@@ -52,13 +52,18 @@ public class UserFacade extends AbstractFacade<User> {
     }
 
     public int ceConnecter(User user) {
-        User loadedUser = find(user.getLogin());
-        if (loadedUser.getLogin() == null) {
-            return -1;
-        } else if (!loadedUser.getPassword().equals(HashageUtil.sha256(user.getPassword()))) {
-            return -2;
+        if (user == null || user.getLogin() == null) {
+            return -3;
         } else {
-            return 1;
+            User loadedUser = find(user.getLogin());
+            if (loadedUser.getLogin() == null) {
+                return -1;
+            } else if (!loadedUser.getPassword().equals(HashageUtil.sha256(user.getPassword()))) {
+                return -2;
+            } else {
+                return 1;
+
+            }
         }
     }
 
@@ -111,6 +116,7 @@ public class UserFacade extends AbstractFacade<User> {
         }
         return amisSug;
     }
+
     public List<User> findBloqueByUser(User user) {
         List<User> bloquerss = new ArrayList<>();
         List<Blocage> bloquers = user.getBlocages();
