@@ -108,6 +108,7 @@ public class UserFacade extends AbstractFacade<User> {
         }
         return amisSug;
     }
+
     public List<User> findBloqueByUser(User user) {
         List<User> bloquerss = new ArrayList<>();
         List<Blocage> bloquers = user.getBlocages();

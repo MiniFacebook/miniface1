@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>MINI FACEBOOK</title>
 
@@ -42,21 +43,21 @@
                                 <div class="task-content">
 
                                     <ul class="task-list">
-
+                                        <c:forEach var="item" items="${invitationController.items}">
                                         <li>
 
                                             <div class="task-title showback">
                                                 <span class="photo"><img alt="avatar" src="../resources/img/ui-zac.jpg" /></span>
-                                                <span class="task-title-sp">jimmy wlton a envoye une invitation</span>
+                                                <span class="task-title-sp">${item.emetteur} a envoye une invitation</span>
 
                                                 <div class="pull-right hidden-phone">
-                                                    <button class="btn btn-primary " title="Voir Profil"><i class="glyphicon glyphicon-eye-open " /></button>
+                                                    <button class="btn btn-primary " title="Voir Profil" ><i class="glyphicon glyphicon-eye-open " /></button>
                                                     <button class="btn btn-success" title="Confirmer"><i class=" fa fa-check" /></button>
                                                     <button class="btn btn-danger " title="Refuser"><i class="fa fa-trash-o " /></button>
                                                 </div>
                                             </div>
                                         </li>
-
+                                        </c:forEach>
                                         <li>
 
                                             <div class="task-title showback">
