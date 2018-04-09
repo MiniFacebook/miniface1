@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>MINI FACEBOOK</title>
+
+
+    </head>
+    <body>
+        <ui:include src="HeaderAdmin.xhtml"/>
+        <ui:include src="SideBarAdmin.xhtml"/>
+        <ui:include src="Head.xhtml"/>
+        <ui:include src="jsBar.xhtml"/>
+
+        <section id="container" >
+
+            <section id="main-content">
+                <section class="wrapper">
+                    <!-- page start-->
+                    <div class="tab-pane" id="chartjs">
+                        <div class="row mt">
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Bar</h4>
+                                    <div class="panel-body text-center">
+                                        <canvas id="bar" height="300" width="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Line</h4>
+                                    <div class="panel-body text-center">
+                                        <canvas id="line" height="300" width="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt">
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Doughnut</h4>
+                                    <div class="panel-body text-center">
+                                        <canvas id="doughnut" height="300" width="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Pie</h4>
+                                    <div class="panel-body text-center">
+                                        <canvas id="pie" height="300" width="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt">
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Radar</h4>
+                                    <div class="panel-body text-center">
+                                        <canvas id="radar" height="300" width="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="content-panel">
+                                    <h4><i class="fa fa-angle-right"></i> Polar Area</h4>
+                                    <div class="panel-body text-center">
+                                        <canvas id="polarArea" height="300" width="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                </section>
+            </section>
+        </section>    
+    </body>
+</html>
+

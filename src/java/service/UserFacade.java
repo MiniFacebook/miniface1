@@ -51,19 +51,14 @@ public class UserFacade extends AbstractFacade<User> {
 
     }
 
-    public int ceConnecter(User user) {
-        if (user == null || user.getLogin() == null) {
-            return -3;
+    public int seConnecter(User user) {
+        User loadedUser = find(user.getLogin());
+        if (loadedUser.getLogin() == null) {
+            return -1;
+        } else if (!loadedUser.getPassword().equals(user.getPassword())) {
+            return -2;
         } else {
-            User loadedUser = find(user.getLogin());
-            if (loadedUser.getLogin() == null) {
-                return -1;
-            } else if (!loadedUser.getPassword().equals(HashageUtil.sha256(user.getPassword()))) {
-                return -2;
-            } else {
-                return 1;
-
-            }
+            return 1;
         }
     }
 

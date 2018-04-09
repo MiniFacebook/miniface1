@@ -30,7 +30,7 @@ public class MessageManager {
     public MessageManager() {
     }
 
-    public static void showMessage(Message message) {
+     public static void showMessage(Message message) {
         if (message != null) {
             if (message.getSeverity() == FacesMessage.SEVERITY_ERROR) {
                 JsfUtil.addErrorMessage(message.getText());

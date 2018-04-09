@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MINI FACEBOOK</title>
+
+    </h:head>
+    <h:body>
+
+
+        <ui:include src="jsBar.xhtml"/>
+
+
+
+        <aside>
+
+            <div id="sidebar"  class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"> <a href="profil.html"><img src="../resources/img/Mark_Zuckerberg.jpg" alt="avatar" class="img-circle" width="60"></img></a></p>
+                    <h5 class="centered"><a href="profil.html">Mark Zuckerberg</a></h5>
+                    <li class="mt">
+                        <a class="active" href="accueilAdmin.html">
+                            <i class="glyphicon glyphicon-home"></i>
+                            <span>Acceuil</span>
+                        </a>
+                    </li>
+                    <li class="mt">
+                        <a href="amis.html">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>Utilisateurs</span>
+                        </a>
+                    </li>
+                    <li class="mt">
+                        <a href="amis.html">
+                            <i class="fa fa-group"></i>
+                            <span>Groupes</span>
+                        </a>
+                    </li>
+                    <li class="mt">
+                        <a href=".html">
+                            <i class="fa fa-envelope-o"></i>
+                            <span>Chat</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+                <div class="centered">
+                    <button id="heure"></button>
+                    <button id="min"></button>
+                    <button id="sec"></button>
+                </div>
+                <!-- sidebar menu end-->
+                <h5 class="centered"><p:outputLabel value="#{publicationController.connectedUser.nom}"></p:outputLabel></h5>
+            </div>
+        </aside>
+
+    </h:body>
+</html>
+
