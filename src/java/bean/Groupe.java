@@ -30,7 +30,7 @@ public class Groupe implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    private Long etat;
+    private String etat;
     private String type;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateCreation;
@@ -46,6 +46,26 @@ public class Groupe implements Serializable {
     private List<Invitation> invitations;
     @OneToMany(mappedBy = "groupe")
     private List<GroupeItem> groupeItems;
+    @OneToMany(mappedBy = "groupe")
+    private List<Photo> photos;
+
+    public Boolean getReturnBack() {
+        return returnBack;
+    }
+
+    public void setReturnBack(Boolean returnBack) {
+        this.returnBack = returnBack;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+    
+    
 
     public List<GroupeItem> getGroupeItems() {
         return groupeItems;
@@ -132,11 +152,11 @@ public class Groupe implements Serializable {
         this.nom = nom;
     }
 
-    public Long getEtat() {
+    public String getEtat() {
         return etat;
     }
 
-    public void setEtat(Long etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
 

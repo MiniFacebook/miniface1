@@ -1,11 +1,15 @@
 package controller;
 
 import bean.Groupe;
+import bean.Photo;
+import bean.User;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
+import controller.util.SessionUtil;
 import service.GroupeFacade;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -20,6 +24,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
 import javax.faces.model.SelectItemGroup;
+import service.UserFacade;
 
 @Named("groupeController")
 @SessionScoped
@@ -27,18 +32,38 @@ public class GroupeController implements Serializable {
 
     @EJB
     private service.GroupeFacade ejbFacade;
+    @EJB
+    private UserFacade userFacade;
+    @EJB
+    private GroupeFacade groupeFacade;
     private List<Groupe> items = null;
     private Groupe selected;
-    private List<SelectItem> types;  
-    
-    
-    
+    private List<SelectItem> types;
+    private Photo photoProfil = null;
+    private Photo photoBackground = null;
+    private User connectedUser;
 
     public GroupeController() {
     }
 
+    public Photo getPhotoBackground() {
+        return photoBackground;
+    }
+
+    public void setPhotoBackground(Photo photoBackground) {
+        this.photoBackground = photoBackground;
+    }
+
+    public Photo getPhotoProfil() {
+        return photoProfil;
+    }
+
+    public void setPhotoProfil(Photo photoProfil) {
+        this.photoProfil = photoProfil;
+    }
+
     public Groupe getSelected() {
-         if (selected == null) {
+        if (selected == null) {
             selected = new Groupe();
         }
         return selected;
@@ -46,6 +71,15 @@ public class GroupeController implements Serializable {
 
     public void setSelected(Groupe selected) {
         this.selected = selected;
+    }
+
+    public User getConnectedUser() {
+        connectedUser = userFacade.find(((User) SessionUtil.getAttribute("connectedUser")).getLogin());
+        return connectedUser;
+    }
+
+    public void setConnectedUser(User connectedUser) {
+        this.connectedUser = connectedUser;
     }
 
     protected void setEmbeddableKeys() {
@@ -171,4 +205,18 @@ public class GroupeController implements Serializable {
 
     }
 
+    public String createGroupe() {
+        int res = groupeFacade.createGroupe(selected, photoProfil, photoBackground, connectedUser);
+        if (res == 1) {
+            JsfUtil.addSuccessMessage("Creation avec success");
+
+            SessionUtil.setAttribute("connectedGroupe", ejbFacade.find(selected.getId()));
+            return "/template/GroupeFil";
+
+        } else {
+            JsfUtil.addErrorMessage("Echec de Creation de groupe ");
+            return null;
+        }
+
+    }
 }

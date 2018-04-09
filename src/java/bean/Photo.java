@@ -28,6 +28,18 @@ public class Photo implements Serializable {
     private Boolean background;
     @ManyToOne
     private User user;
+    @ManyToOne
+    private Groupe groupe;
+
+    public Groupe getGroupe() {
+        return groupe;
+    }
+
+    public void setGroupe(Groupe groupe) {
+        this.groupe = groupe;
+    }
+    
+    
 
     public Photo() {
     }

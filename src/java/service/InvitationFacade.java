@@ -58,7 +58,7 @@ public class InvitationFacade extends AbstractFacade<Invitation> {
 
     public void invitationTypeGroupe(Invitation invitation) {
         Groupe groupe = invitation.getGroupe();
-        if (groupe.getEtat() == 1) {//1= private
+        if (groupe.getType()== "private") {//1= private
             join(invitation);
 
         } else {//2=public

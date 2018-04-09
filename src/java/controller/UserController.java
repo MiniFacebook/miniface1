@@ -30,7 +30,6 @@ public class UserController implements Serializable {
     private service.UserFacade ejbFacade;
     private List<User> items = null;
     private User selected;
-    
 
     public UserController() {
     }
@@ -91,7 +90,7 @@ public class UserController implements Serializable {
 
         int res = ejbFacade.connecter(selected);
         if (res > 0) {
-            SessionUtil.setAttribute("connecttedUser", ejbFacade.find(selected.getLogin()));
+            SessionUtil.setAttribute("connectedUser", ejbFacade.find(selected.getLogin()));
             JsfUtil.addSuccessMessage("connexion avec success");
             return "/template/filActualite";
         } else if (res == -3) {
@@ -189,6 +188,19 @@ public class UserController implements Serializable {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), User.class.getName()});
                 return null;
             }
+        }
+
+    }
+
+    public String createUser() {
+        int res = ejbFacade.cree(selected);
+        if (res == 1) {
+            SessionUtil.setAttribute("connectedUser", ejbFacade.find(selected.getLogin()));
+            JsfUtil.addSuccessMessage("connexion avec success");
+            return "/template/filActualite";
+
+        } else {
+            return null;
         }
 
     }

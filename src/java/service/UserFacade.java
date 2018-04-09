@@ -14,7 +14,7 @@ import bean.Groupe;
 import bean.GroupeItem;
 import bean.Invitation;
 import bean.User;
-import controler.util.HashageUtil;
+import controller.util.HashageUtil;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -52,9 +52,10 @@ public class UserFacade extends AbstractFacade<User> {
         User loadedUser = find(user.getLogin());
         if (loadedUser.getLogin() == null) {
             return -1;
-        } else if (!loadedUser.getPassword().equals(user.getPassword())) {
+        } else if (!loadedUser.getPassword().equals(HashageUtil.sha256(user.getPassword()))) {
             return -2;
         } else {
+            loadedUser.setActive(Boolean.TRUE);
             return 1;
         }
     }
@@ -210,4 +211,29 @@ public class UserFacade extends AbstractFacade<User> {
         }
         return res;
     }
+    
+    
+    public int cree(User user){
+        
+        if (user!=null) {
+            
+        User u = new User();
+        u.setNom(user.getNom());
+        u.setPrenom(user.getPrenom());
+        u.setLogin(user.getLogin());
+        u.setSexe(user.getSexe());
+        u.setDateNaissance(user.getDateNaissance());
+        u.setPassword(HashageUtil.sha256(user.getPassword()));
+        u.setActive(Boolean.TRUE);
+        create(u);
+        return 1;
+        }
+        else 
+            return -1;
+        
+        
+    }
+    
+    
+    
 }
