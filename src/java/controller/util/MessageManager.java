@@ -35,7 +35,7 @@ public class MessageManager {
             if (message.getSeverity() == FacesMessage.SEVERITY_ERROR) {
                 JsfUtil.addErrorMessage(message.getText());
             } else if (message.getSeverity() == FacesMessage.SEVERITY_WARN) {
-                JsfUtil.addWrningMessage(message.getText());
+                JsfUtil.addErrorMessage(message.getText());
             } else if (message.getSeverity() == FacesMessage.SEVERITY_INFO) {
                 if (message.getText() != null && !message.getText().equals("")) {
                     JsfUtil.addSuccessMessage(message.getText());

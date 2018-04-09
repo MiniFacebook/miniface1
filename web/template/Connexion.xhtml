@@ -18,7 +18,6 @@
 
 
         <header class="header black-bg">
-
             <div class="sidebar-toggle-box">
 
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation" />
@@ -26,33 +25,29 @@
             <!--logo start-->
             <a href="index.html" class="logo"><b>Mini Facebook</b></a>
             <!--logo end-->
-
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
 
                 <!--  notification end -->
             </div>
-
             <div class="top-menu">
-               <h:form class="form-inline pull-right" role="form" style="margin-right: 30px;">
-
+                <h:form class="form-inline pull-right" role="form" style="margin-right: 30px;">
                     <div class="form-group" style="margin-top: 15px;">
-                        <p:outputLabel class="sr-only" for="exampleInputEmail2" value="Email address"></p:outputLabel>
-                        <p:inputText  style="border-radius: 20px;" class="form-control" id="exampleInputEmail2" placeholder="Enter email" value="#{userController.selected.login}" />
+                        <p:outputLabel class="sr-only" value="Email address" for="exampleInputEmail2" ></p:outputLabel>
+                        <p:inputText  style="border-radius: 20px;" value="#{userController.selected.login}" class="form-control" id="exampleInputEmail2" placeholder="Enter email"/> 
                     </div>
-
                     <div class="form-group" style="margin-top: 15px;">
-                        <p:outputLabel class="sr-only" for="exampleInputPassword2" value="Password"></p:outputLabel>
-                        <p:password  style="border-radius: 20px;" class="form-control" id="exampleInputPassword2" placeholder="Password" value="#{userController.selected.password}" />
+                        <p:outputLabel class="sr-only" value="Password" for="exampleInputPassword2"></p:outputLabel>
+                        <p:password  style="border-radius: 20px" value="#{userController.selected.password}" class="form-control" id="exampleInputPassword2" placeholder="Password" />
                     </div>
-
                     <div class="form-group" style="margin-top: 15px;">
                         <span><button type="button" id="clock" title="Controler la durée de votre connexion" class="btn btn-theme"><i class="fa fa-clock-o" /></button></span>
                         <span id="temps" hidden=""><input type="time" style="border-radius: 10px; height: 34px;" /></span>
                     </div>
-                   
-                        <h:commandButton  style="margin-top: 15px;" class="btn btn-theme "  action="#{userController.seConnecter()}" value="Se Connecter"></h:commandButton>
-               </h:form>
+                    <div class="form-group" style="margin-top: 15px;">
+                    <h:commandButton class="btn btn-theme btn-bloc" action="#{userController.seConnecter()}" value="Se Connecter "></h:commandButton> 
+                    </div>
+                </h:form>
             </div>
         </header>
         <!--header end-->
@@ -68,62 +63,104 @@
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
-        <section>
-
-
-            <div id="backI">
-                <form>
-
-
-                    <div class="row mt" style="margin-top: 30px;">
-
-                        <div class="col-lg-3">
+        <section >
+	    <section >
+                <div id="backI"><br></br><br></br><br></br>
+                    <div class="row mt">
+                        <div class="col-lg-2">
                         </div>
-
-                        <div class="col-lg-6 " style="margin-top: 30px;">
-
-
-                            <div class="showback" style="margin-top: 90px; border-radius: 10px;">
-
-                                <div style="margin-bottom: 30px;">
-                                    <b>
-                                        <h1> <center>Creer Un nouveau Compte</center></h1></b>
+          		<div class="col-lg-8">
+                            <center>
+                                <div  style="width:80%"><br></br><br></br><br></br>
+                                    <h:form class="well form-horizontal"   id="contact_form">
+                                            <center><h2 class="mb">Creer Votre Compte</h2></center><br>
+                                                <div class="form-group">
+                                                    <label class="col-md-2"></label>
+                                                    <p:outputLabel value="Prenom" class="col-md-3 control-label" />
+                                                    <div class="col-md-4 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                            <p:inputText   placeholder="Prenom" class="form-control"  />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2"></label>
+                                                    <p:outputLabel value="Nom" class="col-md-3 control-label" /> 
+                                                    <div class="col-md-4 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                            <p:inputText  placeholder="Nom" class="form-control"  />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2"></label>
+                                                    <p:outputLabel value="E-mail" class="col-md-3 control-label"/>
+                                                    <div class="col-md-4 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                                            <p:inputText placeholder=" Addresse E-Mail" class="form-control"  />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2"></label>
+                                                    <p:outputLabel value="Password" class="col-md-3 control-label"/>
+                                                    <div class="col-md-4 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                                            <p:password  placeholder=" PassWord" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                                <!-- radio checks -->
+                                                <div class="form-group">
+                                                    <label class="col-md-2"></label>
+                                                    <p:outputLabel value="Sexe" class="col-md-3 control-label"/>
+                                                    <div class="col-md-4">
+                                                        <div class="radio">
+                                                            <div class="col-md-5">
+                                                                <label>
+                                                                    <input type="radio" name="hosting" value="no" />Femme
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <label>
+                                                                    <input type="radio" name="hosting" value="no" />Femme
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Text area --> 
+                                                <div class="form-group">
+                                                    <label class="col-md-2"></label>
+                                                    <p:outputLabel for="dateNaissance" value=" Date De Naissance" class="col-md-3 control-label" />
+                                                    <div class="col-md-4 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="	glyphicon glyphicon-calendar"></i></span>
+                                                            <p:calendar id="dateNaissance" class="form-control"></p:calendar>
+                                                        </div>
+                                                    </div>
+                                                </div><br></br>
+                                                <!-- Button -->
+                                                <div class="form-group">
+                                                    <label class=" control-label"></label>
+                                                    <div class="col-lg-3">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <center><p:commandButton type="submit" class="btn btn-theme btn-bloc" style="width:70%; height:50%" value="Créer Compte"/></center>
+                                                    </div>
+                                                </div></br>
+                                    </h:form>
                                 </div>
-                                <input type="text" class="round-form" style="width: 45%; height: 35px; margin-left: 20px;" value="  Nom" /><input type="text" class=" round-form" style="width: 45%; height: 35px; margin-left: 40px;" value=" Prenom" />
-                                <input type="text" class="round-form" style="width: 96%; height: 35px; margin-top: 30px; margin-left: 20px; margin-right: 10px;" value="  Email" />
-                                <input type="password" class="round-form" style="width: 96%; height: 35px; margin-top: 30px; margin-left: 20px; margin-right: 10px;" value="  PassWord" />
-
-                                <div class="radio">
-
-                                    <label style="margin-left: 200px; margin-top: 30px;">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked" />
-                                        Feminin
-                                    </label>
-
-                                    <label style="margin-left: 150px; margin-top: 30px;">
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-                                        Masculin
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <label style="margin-left: 20px; margin-top: 30px;" for="party">Date de Naissance</label>  :
-                                    <input style="border-radius: 8px;" type="date" id="party" name="nasance" />
-                                </div>
-
-                                <div>
-                                    <center><button type="submit" style="width: 80%; height: 60px; margin-top: 30px;" class="btn btn-theme">Creer Compte</button><center>
-                                        </center></center></div>
-                            </div>
+                            </center>
                         </div>
-
-                        <div class="col-lg-3">
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </section>
+                    </div><!-- col-lg-12-->      	
+                </div>
+            </section> 
+	 </section>
         <!--main content end-->
         <!--footer start-->
         <footer class="site-footer">

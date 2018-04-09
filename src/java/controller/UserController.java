@@ -89,7 +89,7 @@ public class UserController implements Serializable {
 
     public String seConnecter() {
 
-        int res = ejbFacade.ceConnecter(selected);
+        int res = ejbFacade.connecter(selected);
         if (res > 0) {
             SessionUtil.setAttribute("connecttedUser", ejbFacade.find(selected.getLogin()));
             JsfUtil.addSuccessMessage("connexion avec success");

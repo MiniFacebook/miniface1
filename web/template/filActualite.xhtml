@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>MINI FACEBOOK</title>
 
@@ -19,140 +20,130 @@
 
 
         <!--main content end-->
+        
+                    <ui:include src="Header.xhtml"/>
+                    <ui:include src="SideBar.xhtml"/>
+                    <ui:include src="Head.xhtml"/>
+                    <ui:include src="jsBar.xhtml"/>
+                    <ui:include src="jsFilActualite.xhtml"/>
+       
+        
         <section id="main-content">
             <section class="wrapper">
-
                 <div class="row mt">
-
                     <div class="col-lg-1 col-md-1 col-sm-1">
                     </div>
-
-                    <div class="col-lg-10 col-md-12 col-sm-12">
-
+                    <div class="col-lg-10 col-md-12 col-sm-12 ">
+                        <h:form id="formP">
                         <div class="showbackP">
-
-
                             <div class="desc">
-                                <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span><b>
-                                </b></div><b><br />
-                                <textarea value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</textarea><br />
-
-                                <div style="text-align: right;">
-                                    <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
-                                    <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
-                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
-                                </div><br />
-
-                                <div class="pull-right margin-bottom: 20px">
-                                    <button type="button" class="btn btn-default">Publier</button>
-                                </div>
-
-                                <div><br /><br /></div>
-                            </b></div><!--/showback --><b>
-
-                            <div class="showbackP">
-
-                                <div class="desc">
-                                    <span><img src="../resources/img/ui-divya.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a publié 
-
-                                        <div class="pull-right dropdown">
-                                            <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
-
-                                            <ul class="dropdown-menu extende inbox">
-
+                                <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /></span>&nbsp;
+                                <p:outputLabel value="  #{publicationController.connectedUser.nom } #{publicationController.connectedUser.prenom}" />
+                            </div><br></br>
+                            <p:inputTextarea value="#{publicationController.selected.texte}" style="width: 100%; height: 100px;"></p:inputTextarea><br></br>
+                            <div style="text-align: right;">
+                                <h:commandLink 
+                                    action="search.xhtml"
+                                    styleClass="btn btn-default">
+                                    <i class="fa fa-file"></i>
+                                </h:commandLink>&nbsp;
+                                <h:commandLink 
+                                    action="search.xhtml"
+                                    styleClass="btn btn-default">
+                                    <i class="fa fa-camera"></i>
+                                </h:commandLink>&nbsp;
+                                <h:commandLink 
+                                    action="search.xhtml"
+                                    styleClass="btn btn-default">
+                                    <i class="glyphicon glyphicon-facetime-video"></i>
+                                </h:commandLink>&nbsp;
+                            </div><br></br>
+                            <div class="pull-right margin-bottom: 20px">
+                                <p:commandButton class=" btn btn-primary" actionListener="#{publicationController.create}" update="formP" value="Publier" ></p:commandButton>
+                            </div><br></br>
+                            <div><br></br></div>
+                        </div><!--/showback -->
+                        </h:form>
+                        <h:form id="formCC">
+                            <c:forEach items="${publicationController.items}"  var="publication"  >
+                                <div class="showbackP">
+                                    <div class="desc">
+                                        <span><img src="../resources/img/ui-divya.jpg" class="img-circle" width="60" alt="" /> <b><p:outputLabel value="${publication.emetteur.prenom} ${publication.emetteur.nom}"/></b> a publié 
+                                            <div class="pull-right dropdown">
+                                                <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
+                                                <ul class="dropdown-menu extende inbox">
+                                                    <li>
+                                                        <a href="index.html#">Signaler la publication</a>
+                                                    </li>	
+                                                </ul>
+                                            </div>
+                                        </span><br></br>
+                                    </div>	 
+                                    <div class="showback" id="contenuPub">
+                                        <div>
+                                            <p:outputLabel value="${publication.texte}"/>
+                                        </div><br />
+                                        <div>
+                                            <center>
+                                                <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port02.jpg" /></span>
+                                                <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port04.jpg" /></span><br /><br />
+                                                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
+                                                <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
+                                                <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
+                                            </center><br></br>
+                                            <ul>
                                                 <li>
-                                                    <a href="index.html#">Signaler la publication</a>
-                                                </li>	
-                                            </ul>
-                                        </div>
-                                    </span><br />
-                                </div>	 
-
-                                <div class="showback" id="contenuPub">
-
-                                    <div>
-                                        Statut ecrit par User 1	
-                                    </div><br />
-
-                                    <div>
-                                        <center>
-                                            <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port02.jpg" /></span>
-                                            <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port04.jpg" /></span><br /><br />
-                                            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
-                                            <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
-                                        </center><br />
-
-                                        <ul>
-
-                                            <li>
-
-                                                <div class="showback comment" hidden="">
-
-
-                                                    <div class="desc">
-                                                        <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span><b>
-                                                        </b></div><b><br />
-                                                        <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br />
-
+                                                    <div class="showback comment" hidden="">
+                                                        <div class="desc">
+                                                            <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /></span><br></br>
+                                                        </div>
+                                                        <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br></br>
                                                         <div style="text-align: right;">
                                                             <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
                                                             <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
                                                             <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
-                                                        </div><br />
-
+                                                        </div><br></br>
                                                         <div class="pull-right margin-bottom: 20px">
                                                             <button type="button" class="btn btn-default btmcom">Commenter</button>
                                                         </div>
-
-                                                        <div><br /><br /></div>
-                                                    </b></div><!--/showback --><b>
-                                                </b></li><b>
-
+                                                        <div>
+                                                            <br></br>
+                                                        </div>
+                                                    </div><br></br><!--/showback -->
+                                                </li>
+                                                <c:forEach items="${publicationController.selected.commentaires}" var="commentaire">
                                                 <li>
-
                                                     <div class="showbackP">
-                                                        <span><img src="../resources/img/ui-danro.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a commenté
-
-                                                            <div class="pull-right dropdown">
-                                                                <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
-
-                                                                <ul class="dropdown-menu extende inbox">
-
-                                                                    <li>
-                                                                        <a href="index.html#">Signaler commentaire</a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-
-                                                            <div>
-                                                                Contenu du Commentaire
-                                                                <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
-                                                            </div><br />
+                                                        <span><img src="../resources/img/ui-danro.jpg" class="img-circle" width="60" alt="" /><b><p:outputLabel value="${commentaire.user}" /></b> a commenté
+                                                        <div class="pull-right dropdown">
+                                                            <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
+                                                            <ul class="dropdown-menu extende inbox">
+                                                                <li>
+                                                                    <a href="index.html#">Signaler commentaire</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div>
+                                                            <p:outputLabel value="${commentaire.texte}" />
+                                                            <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
+                                                        </div><br></br>
                                                         </span> 								
                                                     </div>
-                                                </li>
-                                            </b></ul><b>
-
+                                                </li><br></br>
+                                                </c:forEach>
+                                            </ul>
                                             <ul>
-
                                                 <li>
-
                                                     <div class="showbackP">
                                                         <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>  Vous</b> avez commenté 
-
                                                             <div class="pull-right dropdown">
                                                                 <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
-
                                                                 <ul class="dropdown-menu extende inbox">
-
                                                                     <li>
                                                                         <a onclick="affiche1()">
                                                                             Modifier
                                                                         </a>
                                                                     </li>
-
                                                                     <li>
                                                                         <a onclick="index.html#">
                                                                             Supprimer
@@ -160,7 +151,6 @@
                                                                     </li>
                                                                 </ul>
                                                             </div>
-
                                                             <div>
                                                                 <span class="contenu1">Contenu du Commentaire</span>
                                                                 <span class="zonemodif" hidden="">
@@ -174,31 +164,28 @@
                                                                     <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
                                                                 </span><br />	
                                                             </div>									
-                                                        </span></div>
+                                                        </span>
+                                                    </div>
                                                 </li>
                                             </ul>
-                                        </b></div><b>			
-                                    </b></div><!-- /showback --><b>
-                                </b></div><b>
-
-                                <div><br /><br /></div>
-
+                                        </div><br></br>			
+                                    </div><br></br><!-- /showback -->
+                                </div>
+                                </c:forEach>
+                                </h:form>
+                                <div><br></br></div>
+                                <h:form id="formC">
                                 <div class="showbackP">
-
                                     <div>
                                         <span> <img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>Vous avez </b>  publié 
-
                                             <div class="pull-right dropdown">
                                                 <button data-toggle="dropdown" class="dropdown-toggle btn btn-default">
                                                     <i class="fa fa-ellipsis-h" />
                                                 </button>
-
                                                 <ul class="dropdown-menu extende inbox">
-
                                                     <li>
                                                         <a onclick="afficherPop()">Modifier</a>
                                                     </li>
-
                                                     <li>
                                                         <a href="index.html#">
                                                             Supprimer
@@ -208,91 +195,67 @@
                                             </div>
                                         </span>
                                     </div>
-
-                                    <div id="statut">Statut ecrit</div><br />
-
-                                    <div class="showback" id="contenuPub">
-
-                                        <div>
-                                            <center>
-                                                <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port02.jpg" /></span>
-                                                <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port04.jpg" /></span>
-
-                                                <br />
-                                                <br />
-                                                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
-                                                <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
-                                                <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
-                                            </center><br />
-
-                                            <ul>
-
-                                                <li>
-
-                                                    <div class="showback comment" hidden="">
-
-                                                        <div class="desc">
-                                                            <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span></div><b><br />
-                                                            <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br />
-
+                                    <div id="statut">Statut ecrit</div><br></br>
+                                        <div class="showback" id="contenuPub">
+                                            <div>
+                                                <center>
+                                                    <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port02.jpg" /></span>
+                                                    <span class="photo"><img alt="avatar" src="../resources/img/portfolio/port04.jpg" /></span>
+                                                    <br></br>
+                                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
+                                                    <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
+                                                    <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
+                                                </center><br></br>
+                                                <ul>
+                                                    <li>
+                                                        <div class="showback comment" hidden="">
+                                                            <div class="desc">
+                                                                <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /></span>
+                                                            </div><br></br>
+                                                            <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br></br>
                                                             <div style="text-align: right;">
                                                                 <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
                                                                 <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
                                                                 <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
-                                                            </div><br />
-
+                                                            </div><br></br>
                                                             <div class="pull-right margin-bottom: 20px">
                                                                 <button type="button" class="btn btn-default btmcom">Commenter</button>
                                                             </div>
-
-                                                            <div><br /><br /></div>
-                                                        </b></div><!--/showback --><b>
-                                                    </b></li><b>
-
+                                                            <div>
+                                                                <br></br><br></br>
+                                                            </div>
+                                                        </div><!--/showback -->
+                                                    </li>
                                                     <li>
-
                                                         <div class="showbackP">
                                                             <span><img src="../resources/img/ui-danro.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a commenté
-
                                                                 <div class="pull-right dropdown">
                                                                     <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
-
-                                                                    <ul class="dropdown-menu extende inbox">
-
-                                                                        <li>
-                                                                            <a href="index.html#">Signaler le commentaire</a>
-                                                                        </li>
-
-                                                                    </ul>
+                                                                        <ul class="dropdown-menu extende inbox">
+                                                                            <li>
+                                                                                <a href="index.html#">Signaler le commentaire</a>
+                                                                            </li>
+                                                                        </ul>
                                                                 </div>
-
                                                                 <div>
                                                                     Contenu du Commentaire
                                                                     <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></button>
-                                                                </div><br /></span> 
-                                                        </div>
+                                                                </div><br></br></span> 
+                                                                </div>
                                                     </li>
-                                                </b></ul><b>
-
-
+                                                </ul>
                                                 <ul>
-
                                                     <li>
-
-                                                        <div class="showbackP"><span>
-                                                                <img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>  Vous</b> avez commenté 
-
+                                                        <div class="showbackP">
+                                                            <span><img src="../resources/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>  Vous</b> avez commenté 
                                                                 <div class="pull-right dropdown">
                                                                     <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
-
                                                                     <ul class="dropdown-menu extende inbox">
-
                                                                         <li>
                                                                             <a onclick="affiche2()">
                                                                                 Modifier
                                                                             </a>
                                                                         </li>
-
                                                                         <li>
                                                                             <a href="index.html#">
                                                                                 Supprimer
@@ -300,7 +263,6 @@
                                                                         </li>
                                                                     </ul>
                                                                 </div>
-
                                                                 <div>
                                                                     <span class="contenu2">Contenu du Commentaire</span>
                                                                     <span class="zonemodif" hidden="">
@@ -308,70 +270,70 @@
                                                                         <span class="pull-right">
                                                                             <button type="button" class="btn btn-primary" onclick="changer2()">Modifier</button>
                                                                             <button type="button" class="btn btn-default" onclick="cancel2()">Annuler</button>
-                                                                            <br />
-                                                                        </span>
+                                                                            <br></br>
+                                                                        </span><br></br>
                                                                     </span>
                                                                     <span>
                                                                         <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
                                                                     </span>
-                                                                    <br />
+                                                                    <br></br>
                                                                 </div>
-                                                            </span></div></li>
+                                                            </span>
+                                                        </div>
+                                                    </li>
                                                 </ul>
-                                            </b></div><b>			
-                                        </b></div><!-- /showback --><b>
-                                    </b></div><b>
-
-                                    <div><br /><br /></div>
-
-                                </b></b></b></div><b><b>			
-                        </b></b></div><!-- __/col-lg-10__--><b><b>
-
-                        <div id="myModal" class="modal">
-                            <!-- Modal content -->
-
-                            <div class="modal-content">
-
-                                <textarea id="textM" value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</textarea><br />
-
-                                <div style="text-align: right;">
-                                    <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
-                                    <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
-                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
-                                </div><br />
-
-                                <div id="photopubli">
-                                    <img alt="avatar" src="../resources/img/portfolio/port02.jpg" width="200" height="200" /> 
-                                    <img alt="avatar" src="../resources/img/portfolio/port04.jpg" width="200" height="200" /> 
+                                            </div>			
+                                        </div><!-- /showback -->
                                 </div>
-                                <span class="pull-right">
-                                    <button type="button" class="btn btn-primary" onclick="modifierPub()">Modifier</button>
-                                    <button type="button" class="btn btn-default" onclick="fermer()">Annuler</button>
-                                    <br />
-                                </span>
+                        </h:form>
+                        <div><br></br><br></br></div>
+                        <div></div>			
+                        <br></br>
+                    </div><!-- __/col-lg-10__-->
 
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+
+                            <textarea id="textM" value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</textarea><br></br>
+
+                            <div style="text-align: right;">
+                                <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
+                            </div><br></br>
+
+                            <div id="photopubli">
+                                <img alt="avatar" src="../resources/img/portfolio/port02.jpg" width="200" height="200" /> 
+                                <img alt="avatar" src="../resources/img/portfolio/port04.jpg" width="200" height="200" /> 
                             </div>
+                            <span class="pull-right">
+                                <button type="button" class="btn btn-primary" onclick="modifierPub()">Modifier</button>
+                                <button type="button" class="btn btn-default" onclick="fermer()">Annuler</button>
+                                <br></br>
+                            </span>
                         </div>
+                    </div>
 
 
 
                         <!-- /col-lg-6 -->
 
-                        <!--/ row -->
-                    </b></b></section><!-- __/wrapper __--><b><b>
-                </b></b></section><!-- /MAIN CONTENT --><b><b>
+                </div>  <!--/ row -->
+            </section><!-- __/wrapper __-->
+        </section><!-- /MAIN CONTENT -->
                 <!--footer start-->
-                <footer class="site-footer">
-
-                    <div class="text-center">
-                        Mini-Facebook
-                        <a href="general.html#" class="go-top">
-                            <i class="fa fa-angle-up" />
-                        </a>
-                    </div>
-                </footer>
+        <footer class="site-footer">
+            <div class="text-center">
+                Mini-Facebook
+                <a href="general.html#" class="go-top">
+                    <i class="fa fa-angle-up" />
+                </a>
+            </div>
+        </footer>
                 <!--footer end-->
-            </b></b>
+                <br></br>
+        
     </h:body>
 </html>
 

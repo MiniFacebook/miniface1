@@ -1,9 +1,12 @@
  package controller;
 
+import bean.Commentaire;
 import bean.Publication;
+import bean.User;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
-import service.PublicationFacade;
+import controller.util.SessionUtil;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,22 +15,39 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
+
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import service.AimeFacade;
+import service.CommentaireFacade;
+import service.PublicationFacade;
+import service.UserFacade;
+
 
 @Named("publicationController")
 @SessionScoped
 public class PublicationController implements Serializable {
 
+   
     @EJB
-    private service.PublicationFacade ejbFacade;
-    private List<Publication> items = null;
+    private PublicationFacade publicationFacade;
+    @EJB
+    private CommentaireFacade commentaireFacade;
+    @EJB
+    private AimeFacade aimeFacade;
+    @EJB
+    private UserFacade userFacade;
+    private List<Publication> items ;
     private Publication selected;
-
+    private Publication publi;
+    private String text;
+    private User connectedUser;
+    private CommentaireController commentaireControler;
+    
     public PublicationController() {
     }
 
@@ -42,16 +62,108 @@ public class PublicationController implements Serializable {
         this.selected = selected;
     }
 
-    protected void setEmbeddableKeys() {
+    public String getText() {
+        return text;
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public PublicationFacade getEjbFacade() {
+        return publicationFacade;
+    }
+
+    public void setEjbFacade(PublicationFacade ejbFacade) {
+        this.publicationFacade = ejbFacade;
+    }
+
+    public CommentaireFacade getCommentaireFacade() {
+        return commentaireFacade;
+    }
+
+    public void setCommentaireFacade(CommentaireFacade commentaireFacade) {
+        this.commentaireFacade = commentaireFacade;
+    }
+
+    public CommentaireController getCommentaireControler() {
+        return commentaireControler;
+    }
+
+    public void setCommentaireControler(CommentaireController commentaireControler) {
+        this.commentaireControler = commentaireControler;
+    }
+
+    public Publication getPubli() {
+        return publi;
+    }
+
+    public void setPubli(Publication publi) {
+        this.publi = publi;
+    }
+
+    public AimeFacade getAimeFacade() {
+        return aimeFacade;
+    }
+
+    public void setAimeFacade(AimeFacade aimeFacade) {
+        this.aimeFacade = aimeFacade;
+    }
+
+    public PublicationFacade getPublicationFacade() {
+        return publicationFacade;
+    }
+
+    public void setPublicationFacade(PublicationFacade publicationFacade) {
+        this.publicationFacade = publicationFacade;
+    }
+
+    public User getConnectedUser() {
+       connectedUser=userFacade.find(((User) SessionUtil.getAttribute("connectedUser")).getLogin());
+       return connectedUser;
+    }
+
+    public void setConnectedUser(User connectedUser) {
+        this.connectedUser = connectedUser;
+    }
+    
+    
+
+    public void comment(Publication publication){
+        publi = publication;
+        detail(publication);
+    }
+    
+    public void detail(Publication publication){
+       selected=publication;
+       selected.setCommentaires(commentaireFacade.findByPub(publication));
+    }
+   
+    
+    public String addComment(){
+       commentaireFacade.saveComment(publi,text);
+       text = null;
+       return null;
+    }
+    
+    public void addLike(Publication publication) {
+        aimeFacade.saveLike(publication);
+    }
+    
+    public int nbAimes(Publication publication){
+        return  publication.getAimes().size();
+    }
+
+    protected void setEmbeddableKeys() {
+    }
+    
     protected void initializeEmbeddableKey() {
     }
 
     private PublicationFacade getFacade() {
-        return ejbFacade;
+        return publicationFacade;
     }
-
+    
     public Publication prepareCreate() {
         selected = new Publication();
         initializeEmbeddableKey();
@@ -89,7 +201,13 @@ public class PublicationController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
+                    if(persistAction == PersistAction.UPDATE){
+                        getFacade().edit(selected);
+                    }
+                    else{
+                        getFacade().savePostFil(selected,connectedUser);
+                        selected = null;
+                    }
                 } else {
                     getFacade().remove(selected);
                 }
@@ -117,11 +235,11 @@ public class PublicationController implements Serializable {
     }
 
     public List<Publication> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        return publicationFacade.findAll();
     }
 
     public List<Publication> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        return publicationFacade.findAll();
     }
 
     @FacesConverter(forClass = Publication.class)
@@ -164,5 +282,6 @@ public class PublicationController implements Serializable {
         }
 
     }
+
 
 }
