@@ -31,35 +31,47 @@
                         <div class="showback ">
 
                             <p bgcolor="black-bg"> Les groupes sont très pratiques pour travailler ensemble et rester en contact avec les personnes de votre choix. Partagez des photos et des vidéos, participez à des conversations, faites des projets et plus encore. </p>
-                            <form>         
+                            <h:form>>         
 
                                 <div class="centered">
                                     Photo profil
 
 
-                                    <p> <label class=" control-label centered "> <a href="#"><img src="../resources/img/user.png" class="img-circle" width="60" alt="" /></a> <input type="file" name="editPhotoGroupe" value="Edit" /></label></p> <br />
+                                    <p> <p:outputLabel class=" control-label centered "> <a href="#"><img src="../resources/img/user.png" class="img-circle" width="60" alt="" /></a> <p:inputText type="file"  value="Edit" /></p:outputLabel></p> <br />
                                 </div>
 
                                 <div class="form-group centered">
-                                    <label class=" control-label"> Nom du groupe</label>
+                                    <p:outputLabel class=" control-label"> Nom du groupe</p:outputLabel>
 
-                                    <input type="text" class="form-control round-form" />
+                                    <p:inputText type="text" class="form-control round-form" />
                                 </div> 
 
                                 <div class="form-group centered">
-                                    <label class=" control-label">Etat </label>
+                                    <p:outputLabel class=" control-label">Etat </p:outputLabel>
 
-                                    <input type="text" class="form-control round-form" />
+                                    <p:inputText type="text" class="form-control round-form" />
                                     La photo de background
                                 </div>
 
-                                <p class="centered"> <label class="control-label "> <a href="#"><img src="../resources/img/background.jpg" height="100" width="340" alt="" /></a><br /><br /> <input type="file" name="editPhotoBackgroundGroupe" value="Edit" /></label></p> <br />
+                                <p class="centered"> <p:outputLabel class="control-label "> <a href="#"><img src="../resources/img/background.jpg" height="100" width="340" alt="" /></a><br /><br /> <p:inputText type="file"  value="Edit" /></p:outputLabel></p> <br />
 
-                                <div class="btn-group">
+                                
+                                
+                <p:outputLabel for ="type" value="TYPE: " class="col-xs-3 control-label" />
+        <p:selectOneMenu id="type" value="#{groupeController.selected.type}">
+            <f:selectItem itemLabel="select-One"  itemValue=""  />
+            <f:selectItem itemLabel="Priver:Tout le monde peut trouver le groupe et en voir les membres. Seuls les membres peuvent voir les publications" itemValue="private" />
+            <f:selectItem itemLabel="Publique: Tout le monde peut voir le groupe, ses membres et leurs publications." itemValue="public" />
+        
+        </p:selectOneMenu> <br /><br />
+                                    <button type="button" class="btn btn-default btn-theme btn-lg btn-block " name="creegroupe"> Creer votre propre groupe</button>
+
+                               </h:form>></div></div></div>
+                          <!--      <div class="btn-group">
 
 
                                     <a class="btn btn-warning btn-select btn-select-light">
-                                        <input type="hidden" class="btn-select-input" id="" name="" value="" />
+                                        <p:inputText type="hidden" class="btn-select-input" id="" name="" value="" />
                                         <span class="btn-select-value">Select an Item</span>
                                         <span class="btn-select-arrow glyphicon glyphicon-chevron-down" />
 
@@ -72,11 +84,18 @@
                                             <li>Secret:Seuls les membres peuvent trouver le groupe et voir les publications</li>
 
                                         </ul>
-                                    </a><br /><br />
-                                    <button type="button" class="btn btn-default btn-theme btn-lg  centred " name="creegroupe"> Creer votre propre groupe</button>
+                                    </a><br /><br />-->
 
-                                </div></form></div></div></div>
-
+                
+                
+                
+                
+                
+                
+                
+                
+                
+             
                 <!--******************** end of ajouer groupe***********-->
 
 

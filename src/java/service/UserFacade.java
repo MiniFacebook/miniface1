@@ -55,7 +55,7 @@ public class UserFacade extends AbstractFacade<User> {
             User loadedUser = find(user.getLogin());
             if (loadedUser.getLogin() == null) {
                 return -1;
-            } else if (!loadedUser.getPassword().equals(HashageUtil.sha256(user.getPassword()))) {
+            } else if (!loadedUser.getPassword().equals(user.getPassword())) {
                 return -2;
             } else {
                 return 1;

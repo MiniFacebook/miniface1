@@ -30,6 +30,7 @@ public class UserController implements Serializable {
     private service.UserFacade ejbFacade;
     private List<User> items = null;
     private User selected;
+    
 
     public UserController() {
     }
@@ -61,14 +62,12 @@ public class UserController implements Serializable {
         return selected;
     }
 
-     public void save() {
+    public void save() {
         ejbFacade.saveMethode(selected);
-        selected= null;
+        selected = null;
 
     }
-    
-    
-    
+
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
         if (!JsfUtil.isValidationFailed()) {
@@ -94,11 +93,14 @@ public class UserController implements Serializable {
         if (res > 0) {
             SessionUtil.setAttribute("connecttedUser", ejbFacade.find(selected.getLogin()));
             JsfUtil.addSuccessMessage("connexion avec success");
-            return "/template/GroupeFil";
+            return "/template/filActualite";
+        } else if (res == -3) {
+            JsfUtil.addErrorMessage("Entrer vos informations");
+            return null;
         } else {
             JsfUtil.addErrorMessage("votre login ou votre mot de passe est incorrecte");
-            return null;
         }
+        return null;
 
     }
 

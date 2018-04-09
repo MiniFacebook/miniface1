@@ -18,6 +18,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.model.SelectItem;
+import javax.faces.model.SelectItemGroup;
 
 @Named("groupeController")
 @SessionScoped
@@ -27,6 +29,10 @@ public class GroupeController implements Serializable {
     private service.GroupeFacade ejbFacade;
     private List<Groupe> items = null;
     private Groupe selected;
+    private List<SelectItem> types;  
+    
+    
+    
 
     public GroupeController() {
     }
