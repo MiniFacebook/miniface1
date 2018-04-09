@@ -61,14 +61,12 @@ public class UserController implements Serializable {
         return selected;
     }
 
-     public void save() {
+    public void save() {
         ejbFacade.saveMethode(selected);
-        selected= null;
+        selected = null;
 
     }
-    
-    
-    
+
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
         if (!JsfUtil.isValidationFailed()) {
@@ -89,15 +87,20 @@ public class UserController implements Serializable {
     }
 
     public String seConnecter() {
-        int res = ejbFacade.seConnecter(selected);
+
+        int res = ejbFacade.connecter(selected);
         if (res > 0) {
-            SessionUtil.setAttribute("connectedUser",selected);
-            JsfUtil.addSuccessMessage("ConnexionReussi");
-            selected = null;
+            SessionUtil.setAttribute("connectedUser", ejbFacade.find(selected.getLogin()));
+            JsfUtil.addSuccessMessage("connexion avec success");
             return "/template/filActualite";
-        } else {
+        } else if (res == -3) {
+            JsfUtil.addErrorMessage("Entrer vos informations");
             return null;
+        } else {
+            JsfUtil.addErrorMessage("votre login ou votre mot de passe est incorrecte");
         }
+        return null;
+
     }
 
     public List<User> getItems() {
@@ -184,6 +187,19 @@ public class UserController implements Serializable {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), User.class.getName()});
                 return null;
             }
+        }
+
+    }
+
+    public String createUser() {
+        int res = ejbFacade.cree(selected);
+        if (res == 1) {
+            SessionUtil.setAttribute("connectedUser", ejbFacade.find(selected.getLogin()));
+            JsfUtil.addSuccessMessage("connexion avec success");
+            return "/template/filActualite";
+
+        } else {
+            return null;
         }
 
     }

@@ -16,7 +16,7 @@ import bean.Invitation;
 import bean.SignalPublication;
 import bean.SignalUser;
 import bean.User;
-import controler.util.HashageUtil;
+import controller.util.HashageUtil;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,13 +51,14 @@ public class UserFacade extends AbstractFacade<User> {
 
     }
 
-    public int seConnecter(User user) {
+    public int connecter(User user) {
         User loadedUser = find(user.getLogin());
         if (loadedUser.getLogin() == null) {
             return -1;
-        } else if (!loadedUser.getPassword().equals(user.getPassword())) {
+        } else if (!loadedUser.getPassword().equals(HashageUtil.sha256(user.getPassword()))) {
             return -2;
         } else {
+            loadedUser.setActive(Boolean.TRUE);
             return 1;
         }
     }
@@ -213,41 +214,29 @@ public class UserFacade extends AbstractFacade<User> {
         }
         return res;
     }
-     SignalUserFacade signalUserFacade;
-    SignalPublicationFacade signalPublicationFacade;
-   
-    public List<SignalUser> userSignales() {
-        List<SignalUser> SignalUsers = signalUserFacade.listeSignalesAdmin();
-        List<SignalUser> usersSignales = new ArrayList<>();
-        long nbrSignale = 0;
-        for (SignalUser usersSignale : SignalUsers) {
-            nbrSignale = signalUserFacade.nombreSignale(usersSignale.getUserSignale());
-            if (nbrSignale > 25) {
-                usersSignale.setDateSupression(new Date());
-                signalUserFacade.edit(usersSignale);
-                 usersSignale.getUserSignale().setDateSuppression(new Date());
-                edit( usersSignale.getUserSignale());
-            } else {
-                usersSignales.add(usersSignale);
-            }
+    
+    
+    public int cree(User user){
+        
+        if (user!=null) {
+            
+        User u = new User();
+        u.setNom(user.getNom());
+        u.setPrenom(user.getPrenom());
+        u.setLogin(user.getLogin());
+        u.setSexe(user.getSexe());
+        u.setDateNaissance(user.getDateNaissance());
+        u.setPassword(HashageUtil.sha256(user.getPassword()));
+        u.setActive(Boolean.TRUE);
+        create(u);
+        return 1;
         }
-        return usersSignales;
+        else 
+            return -1;
+        
+        
     }
     
-
-     public List<SignalPublication> publicationSignales() {
-        List<SignalPublication> SignalPublications = signalPublicationFacade.publicationSignaler();
-        List<SignalPublication> pubSignales = new ArrayList<>();
-        long nbrSignale = 0;
-        for (SignalPublication signalPublication : SignalPublications) {
-            nbrSignale = signalPublicationFacade.nombreSignale(signalPublication.getPublicationSignale());
-            if (nbrSignale > 25) {
-                signalPublication.setDateSupression(new Date());
-                signalPublicationFacade.edit(signalPublication);
-            } else {
-                pubSignales.add(signalPublication);
-            }
-        }
-        return pubSignales;
-    }
+    
+    
 }
