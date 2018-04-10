@@ -140,7 +140,7 @@
                                             <span class="from"> Zac Snider</span><br />
                                             maintenant
                                             <span class="time"> 
-                                                <h:commandButton class="btn btn-danger "><i class="fa fa-trash-o " /></h:commandButton>
+                                                <button class="btn btn-danger "><i class="fa fa-trash-o " /></button>
                                             </span>
                                         </span>
                                         <span class="message">
@@ -156,7 +156,7 @@
                                             <span class="from"> DIVYA MANIAN</span><br />
                                             40min
                                             <span class="time"> 
-                                                <h:commandButton class="btn btn-danger "><i class="fa fa-trash-o " /></h:commandButton>
+                                                <button class="btn btn-danger "><i class="fa fa-trash-o " /></button>
                                             </span>
                                         </span>
                                         <span class="message">
@@ -172,7 +172,7 @@
                                             <span class="from"> DAN ROGERS</span><br />
                                             20/02/2018 16:44
                                             <span class="time"> 
-                                                <h:commandButton class="btn btn-danger "><i class="fa fa-trash-o " /></h:commandButton>
+                                                <button class="btn btn-danger "><i class="fa fa-trash-o " /></button>
                                             </span>
                                         </span>
                                         <span class="message">
@@ -213,8 +213,8 @@
                                             <span class="from">Zac Snider</span>
 
                                             <div class="pull-right hidden-phone">
-                                                <h:commandButton class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></h:commandButton>
-                                                <h:commandButton class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></h:commandButton>
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
                                             </div>
                                         </span>
 
@@ -228,8 +228,8 @@
                                             <span class="from">Divya Manian</span>
 
                                             <div class="pull-right hidden-phone">
-                                                <h:commandButton class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></h:commandButton>
-                                                <h:commandButton class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></h:commandButton>
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
                                             </div>
                                         </span>
                                     </a>
@@ -242,8 +242,8 @@
                                             <span class="from">Dan Rogers</span>
 
                                             <div class="pull-right hidden-phone">
-                                                <h:commandButton class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></h:commandButton>
-                                                <h:commandButton class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></h:commandButton>
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
                                             </div>
                                         </span>
                                     </a>
@@ -256,8 +256,8 @@
                                             <span class="from">Dj Sherman</span>
 
                                             <div class="pull-right hidden-phone">
-                                                <h:commandButton class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></h:commandButton>
-                                                <h:commandButton class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></h:commandButton>
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
                                             </div>
                                         </span>
 
@@ -342,8 +342,8 @@
                             </a></li>
 
                         <li id="header_inbox_bar" class="dropdown">
-                            <p:inputText type="text" class="round-form" style="margin-left: 80px; height: 33px; width: 500px;" placeholder="   Search.." />
-                            <h:commandButton type="h:commandButton" class=" btn btn-theme" action="#{userController.findByNameAndPrenom()}">Rechercher</h:commandButton>
+                            <input type="text" class="round-form" style="margin-left: 80px; height: 33px; width: 500px;" placeholder="   Search.." />
+                            <button type="button" class=" btn btn-theme" >Rechercher</button>
                         </li>
                         <!--notifications dropdown end-->
                     </ul>
@@ -363,8 +363,7 @@
 
                     <ul class="sidebar-menu" id="nav-accordion">
 
-                        <h5 class="centered"><u>
-                                <h:commandButton value="Amie Actif" action="#{userController.afficheListAmis()}"></h:commandButton> </u></h5>
+                        <h5 class="centered"><u>Amie Actif</u></h5>
 
                         <li class="mt">
                             <a href="Chat.xhtml">
@@ -431,10 +430,10 @@
                         </li>     
                         <form action="#" method="get" class="sidebar-form">
 
-                            <div class="p:inputText-group">
-                                <p:inputText type="text" name="q" class="form-control" placeholder="Search Amis ..." />
-                                <span class="p:inputText-group-btn">
-                                    <h:commandButton type="submit" name="seach" id="search-btn" class="btn btn-flat" action="#{userController.findByNameAndPrenomActive()}"><i class="fa fa-search" /></h:commandButton>
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control" placeholder="Search Amis ..." />
+                                <span class="input-group-btn">
+                                    <button type="submit" name="seach" id="search-btn" class="btn btn-flat"><i class="fa fa-search" /></button>
                                 </span>
                             </div>
                         </form>
@@ -443,9 +442,9 @@
                     </ul>
                     <!-- sidebar menu end--><!--
                     <div class="centered">							
-                                    <h:commandButton id="heure"></h:commandButton>
-                                    <h:commandButton id="min"></h:commandButton>
-                                    <h:commandButton id="sec"></h:commandButton>
+                                    <button id="heure"></button>
+                                    <button id="min"></button>
+                                    <button id="sec"></button>
                     </div>
                     -->
                     <!-- sidebar menu end-->
@@ -518,16 +517,16 @@
                                     <div class="desc">
                                         <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span><b>
                                         </b></div><b><br />
-                                        <p:inputTextarea value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</p:inputTextarea><br />
+                                        <textarea value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</textarea><br />
 
                                         <div style="text-align: right;">
-                                            <h:commandButton type="h:commandButton" class="btn btn-default" action=""><i class="fa fa-file" /></h:commandButton>
-                                            <h:commandButton type="h:commandButton" class="btn btn-default" action="#{PhotoController.AffichePhoto()}"><i class="fa fa-camera"/></h:commandButton>
-                                            <h:commandButton type="h:commandButton" class="btn btn-default"  action="#{videosController.afficherVideos()}"><i class="glyphicon glyphicon-facetime-video" /></h:commandButton>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
                                         </div><br />
 
                                         <div class="pull-right margin-bottom: 20px">
-                                            <h:commandButton type="h:commandButton" class="btn btn-default">Publier</h:commandButton>
+                                            <button type="button" class="btn btn-default">Publier</button>
                                         </div>
 
                                         <div><br /><br /></div>
@@ -544,11 +543,10 @@
                                         <div class="desc">	 
 
                                             <h2> Intro</h2>
-                                            <i class="glyphicon glyphicon-briefcase" value="#{userController.selected.intro}" />Travailler a <a>ACIMA</a><br />
-                                            <i class="material-icons" value="#{userController.selected.etablissementItems}" />Etudier a <a>FSTG</a><br />
-                                            <i class="material-icons" value="#{userController.selected.emploiItems}" />Travailler a <a>Menara Mall</a><br />
-                                            <i class="glyphicon glyphicon-map-marker" value="#{userController.selected.lieu.adresse}"/>Habite a <a>Marrakech</a><br />
-                                            <i class="fa fa-home" value="#{userController.selected.lieu.villeOrigine}" />Ville d'origine <a>Marrakech</a><br />
+                                            <i class="glyphicon glyphicon-briefcase" value="" />Travailler a <a>ACIMA</a><br />
+                                            <i class="material-icons" value="" />Etudier a <a>FSTG</a><br />
+                                            <i class="glyphicon glyphicon-map-marker" value=""/>Habite a <a>Marrakech</a><br />
+                                            <i class="fa fa-home" value="" />Ville d'origine <a>Marrakech</a><br />
                                             <br />
                                             <i class="" />Membre depuis november 2013<br/>
                                         </div>
@@ -572,7 +570,7 @@
                                             <span><img src="assets/img/ui-divya.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a publie
 
                                                 <div class="pull-right dropdown">
-                                                    <h:commandButton data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></h:commandButton>
+                                                    <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
 
                                                     <ul class="dropdown-menu extende inbox">
 
@@ -594,9 +592,9 @@
                                                 <center>
                                                     <span class="photo"><img alt="avatar" src="assets/img/portfolio/port02.jpg" /></span>
                                                     <span class="photo"><img alt="avatar" src="assets/img/portfolio/port04.jpg" /></span><br /><br />
-                                                    <h:commandButton type="h:commandButton" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</h:commandButton>
-                                                    <h:commandButton type="h:commandButton" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</h:commandButton>
-                                                    <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</h:commandButton>
+                                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
+                                                    <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
+                                                    <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
                                                 </center><br />
 
                                                 <ul>
@@ -609,16 +607,16 @@
                                                             <div class="desc">
                                                                 <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span><b>
                                                                 </b></div><b><br />
-                                                                <p:inputTextarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</p:inputTextarea><br />
+                                                                <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br />
 
                                                                 <div style="text-align: right;">
-                                                                    <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-file" /></h:commandButton>
-                                                                    <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-camera" /></h:commandButton>
-                                                                    <h:commandButton type="h:commandButton" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></h:commandButton>
+                                                                    <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                                                    <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
                                                                 </div><br />
 
                                                                 <div class="pull-right margin-bottom: 20px">
-                                                                    <h:commandButton type="h:commandButton" class="btn btn-default btmcom">Commenter</h:commandButton>
+                                                                    <button type="button" class="btn btn-default btmcom">Commenter</button>
                                                                 </div>
 
                                                                 <div><br /><br /></div>
@@ -631,7 +629,7 @@
                                                                 <span><img src="assets/img/ui-danro.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a comment
 
                                                                     <div class="pull-right dropdown">
-                                                                        <h:commandButton data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></h:commandButton>
+                                                                        <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
 
                                                                         <ul class="dropdown-menu extende inbox">
 
@@ -644,7 +642,7 @@
 
                                                                     <div>
                                                                         Contenu du Commentaire
-                                                                        <h:commandButton style="margin-bottom: 10px;" type="h:commandButton" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></h:commandButton><br />
+                                                                        <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
                                                                     </div><br />
                                                                 </span> 								
                                                             </div>
@@ -659,7 +657,7 @@
                                                                 <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>  Vous</b> avez commente 
 
                                                                     <div class="pull-right dropdown">
-                                                                        <h:commandButton data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></h:commandButton>
+                                                                        <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
 
                                                                         <ul class="dropdown-menu extende inbox">
 
@@ -680,14 +678,14 @@
                                                                     <div>
                                                                         <span class="contenu1">Contenu du Commentaire</span>
                                                                         <span class="zonemodif" hidden="">
-                                                                            <p:inputTextarea class="texte1" style="width: 100%;"></p:inputTextarea>
+                                                                            <textarea class="texte1" style="width: 100%;"></textarea>
                                                                             <span class="pull-right">
-                                                                                <h:commandButton type="h:commandButton" class="btn btn-primary" onclick="changer1()">Modifier</h:commandButton>
-                                                                                <h:commandButton type="h:commandButton" class="btn btn-default" onclick="cancel1()">Annuler</h:commandButton><br />
+                                                                                <button type="button" class="btn btn-primary" onclick="changer1()">Modifier</button>
+                                                                                <button type="button" class="btn btn-default" onclick="cancel1()">Annuler</button><br />
                                                                             </span>
                                                                         </span>
                                                                         <span>
-                                                                            <h:commandButton style="margin-bottom: 10px;" type="h:commandButton" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></h:commandButton><br />
+                                                                            <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
                                                                         </span><br />	
                                                                     </div>									
                                                                 </span></div>
@@ -705,9 +703,9 @@
                                                 <span> <img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>Vous avez </b>  publie
 
                                                     <div class="pull-right dropdown">
-                                                        <h:commandButton data-toggle="dropdown" class="dropdown-toggle btn btn-default">
+                                                        <button data-toggle="dropdown" class="dropdown-toggle btn btn-default">
                                                             <i class="fa fa-ellipsis-h" />
-                                                        </h:commandButton>
+                                                        </button>
 
                                                         <ul class="dropdown-menu extende inbox">
 
@@ -736,9 +734,9 @@
 
                                                         <br />
                                                         <br />
-                                                        <h:commandButton type="h:commandButton" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</h:commandButton>
-                                                        <h:commandButton type="h:commandButton" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</h:commandButton>
-                                                        <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</h:commandButton>
+                                                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
+                                                        <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
+                                                        <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
                                                     </center><br />
 
                                                     <ul>
@@ -749,16 +747,16 @@
 
                                                                 <div class="desc">
                                                                     <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span></div><b><br />
-                                                                    <p:inputTextarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</p:inputTextarea><br />
+                                                                    <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br />
 
                                                                     <div style="text-align: right;">
-                                                                        <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-file" /></h:commandButton>
-                                                                        <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-camera" /></h:commandButton>
-                                                                        <h:commandButton type="h:commandButton" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></h:commandButton>
+                                                                        <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                                                        <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                                                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
                                                                     </div><br />
 
                                                                     <div class="pull-right margin-bottom: 20px">
-                                                                        <h:commandButton type="h:commandButton" class="btn btn-default btmcom">Commenter</h:commandButton>
+                                                                        <button type="button" class="btn btn-default btmcom">Commenter</button>
                                                                     </div>
 
                                                                     <div><br /><br /></div>
@@ -771,7 +769,7 @@
                                                                     <span><img src="assets/img/ui-danro.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a commente
 
                                                                         <div class="pull-right dropdown">
-                                                                            <h:commandButton data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></h:commandButton>
+                                                                            <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
 
                                                                             <ul class="dropdown-menu extende inbox">
 
@@ -784,7 +782,7 @@
 
                                                                         <div>
                                                                             Contenu du Commentaire
-                                                                            <h:commandButton style="margin-bottom: 10px;" type="h:commandButton" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></h:commandButton>
+                                                                            <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></button>
                                                                         </div><br /></span> 
                                                                 </div>
                                                             </li>
@@ -799,7 +797,7 @@
                                                                         <img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>  Vous</b> avez commente 
 
                                                                         <div class="pull-right dropdown">
-                                                                            <h:commandButton data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></h:commandButton>
+                                                                            <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
 
                                                                             <ul class="dropdown-menu extende inbox">
 
@@ -820,15 +818,15 @@
                                                                         <div>
                                                                             <span class="contenu2">Contenu du Commentaire</span>
                                                                             <span class="zonemodif" hidden="">
-                                                                                <p:inputTextarea class="texte2" style="width: 100%;"></p:inputTextarea>
+                                                                                <textarea class="texte2" style="width: 100%;"></textarea>
                                                                                 <span class="pull-right">
-                                                                                    <h:commandButton type="h:commandButton" class="btn btn-primary" onclick="changer2()">Modifier</h:commandButton>
-                                                                                    <h:commandButton type="h:commandButton" class="btn btn-default" onclick="cancel2()">Annuler</h:commandButton>
+                                                                                    <button type="button" class="btn btn-primary" onclick="changer2()">Modifier</button>
+                                                                                    <button type="button" class="btn btn-default" onclick="cancel2()">Annuler</button>
                                                                                     <br />
                                                                                 </span>
                                                                             </span>
                                                                             <span>
-                                                                                <h:commandButton style="margin-bottom: 10px;" type="h:commandButton" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></h:commandButton><br />
+                                                                                <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
                                                                             </span>
                                                                             <br />
                                                                         </div>
@@ -848,12 +846,12 @@
 
                                         <div class="modal-content">
 
-                                            <p:inputTextarea id="textM" value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</p:inputTextarea><br />
+                                            <textarea id="textM" value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</textarea><br />
 
                                             <div style="text-align: right;">
-                                                <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-file" /></h:commandButton>
-                                                <h:commandButton type="h:commandButton" class="btn btn-default"><i class="fa fa-camera" /></h:commandButton>
-                                                <h:commandButton type="h:commandButton" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></h:commandButton>
+                                                <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                                <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
                                             </div><br />
 
                                             <div id="photopubli">
@@ -861,8 +859,8 @@
                                                 <img alt="avatar" src="assets/img/portfolio/port04.jpg" width="200" height="200" /> 
                                             </div>
                                             <span class="pull-right">
-                                                <h:commandButton type="h:commandButton" class="btn btn-primary" onclick="modifierPub()">Modifier</h:commandButton>
-                                                <h:commandButton type="h:commandButton" class="btn btn-default" onclick="fermer()">Annuler</h:commandButton>
+                                                <button type="button" class="btn btn-primary" onclick="modifierPub()">Modifier</button>
+                                                <button type="button" class="btn btn-default" onclick="fermer()">Annuler</button>
                                                 <br />
                                             </span>
 

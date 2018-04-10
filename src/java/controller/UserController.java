@@ -1,5 +1,6 @@
 package controller;
 
+import bean.EtablissementItem;
 import bean.User;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
