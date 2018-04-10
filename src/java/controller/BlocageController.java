@@ -18,6 +18,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import java.io.IOException;
+import net.sf.jasperreports.engine.JRException;
 
 @Named("blocageController")
 @SessionScoped
@@ -28,11 +30,18 @@ public class BlocageController implements Serializable {
     private List<Blocage> items = null;
     private Blocage selected;
 
+    //jasper
+    public void generatePdf() throws JRException, IOException {
+        ejbFacade.generatePdf();
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+    
+
     public BlocageController() {
     }
 
     public Blocage getSelected() {
-         if (selected == null) {
+        if (selected == null) {
             selected = new Blocage();
         }
         return selected;

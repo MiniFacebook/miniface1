@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Lieu implements Serializable {
+
     @OneToMany(mappedBy = "lieu")
     private List<User> users;
     private static final long serialVersionUID = 1L;
@@ -28,13 +29,19 @@ public class Lieu implements Serializable {
     private String adresse;
     private String ville;
     private String villeOrigine;
-    
 
     public Lieu() {
     }
 
     public Lieu(Long id) {
         this.id = id;
+    }
+
+    public Lieu(Long id, String adresse, String ville, String villeOrigine) {
+        this.id = id;
+        this.adresse = adresse;
+        this.ville = ville;
+        this.villeOrigine = villeOrigine;
     }
 
     public List<User> getUsers() {
@@ -69,9 +76,6 @@ public class Lieu implements Serializable {
         this.villeOrigine = villeOrigine;
     }
 
-  
-    
-
     public Long getId() {
         return id;
     }
@@ -105,5 +109,4 @@ public class Lieu implements Serializable {
         return "Lieu{" + "id=" + id + ", adresse=" + adresse + ", ville=" + ville + ", villeOrigine=" + villeOrigine + '}';
     }
 
-    
 }

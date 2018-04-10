@@ -1,5 +1,6 @@
 package controller;
 
+import bean.EtablissementItem;
 import bean.User;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
@@ -19,6 +20,9 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import java.io.IOException;
+
+import net.sf.jasperreports.engine.JRException;
 import javax.faces.convert.FacesConverter;
 
 @Named("userController")
@@ -32,6 +36,48 @@ public class UserController implements Serializable {
     private User selected;
 
     public UserController() {
+    }
+
+    //recherche1
+    public List<User> findByNameAndPrenom() {
+        List<User> result = ejbFacade.findByNameAndPrenom(selected.getNom(), selected.getPrenom());
+        return result;
+    }
+
+    //recherche2
+    public List<User> findByNameAndPrenomActive() {
+        List<User> result = ejbFacade.findByNameAndPrenomActive(selected.getNom(), selected.getPrenom());
+        return result;
+    }
+
+    //jasper
+    public void generatePdf() throws JRException, IOException {
+        ejbFacade.generatePdf();
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+
+    //la modification(parametre)
+    public String fonctionParam() {
+        int test = ejbFacade.fonctionParam(selected, selected.getEtablissementItems(), selected.getEmploiItems());
+        return "/template/Parametre";
+    }
+
+    //amis active
+    public List<User> afficheListAmis() {
+        List<User> result=ejbFacade.afficheListAmis(selected);
+        return result;
+    }
+
+    //amis bolquer
+    public String afficheListAmisBloquer() {
+        System.out.println("la liste des amis bloquers  est " + ejbFacade.afficheListAmisBloquer(selected));
+        return "/template/Amis";
+    }
+
+    //affiche les infos
+    public String clone1() {
+        ejbFacade.clone(selected);
+        return "/template/Profil";
     }
 
     public User getSelected() {
@@ -87,20 +133,15 @@ public class UserController implements Serializable {
     }
 
     public String seConnecter() {
-
         int res = ejbFacade.connecter(selected);
         if (res > 0) {
-            SessionUtil.setAttribute("connectedUser", ejbFacade.find(selected.getLogin()));
-            JsfUtil.addSuccessMessage("connexion avec success");
+            SessionUtil.setAttribute("connectedUser",selected);
+            JsfUtil.addSuccessMessage("ConnexionReussi");
+            selected = null;
             return "/template/filActualite";
-        } else if (res == -3) {
-            JsfUtil.addErrorMessage("Entrer vos informations");
-            return null;
         } else {
-            JsfUtil.addErrorMessage("votre login ou votre mot de passe est incorrecte");
+            return null;
         }
-        return null;
-
     }
 
     public List<User> getItems() {
@@ -187,19 +228,6 @@ public class UserController implements Serializable {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), User.class.getName()});
                 return null;
             }
-        }
-
-    }
-
-    public String createUser() {
-        int res = ejbFacade.cree(selected);
-        if (res == 1) {
-            SessionUtil.setAttribute("connectedUser", ejbFacade.find(selected.getLogin()));
-            JsfUtil.addSuccessMessage("connexion avec success");
-            return "/template/filActualite";
-
-        } else {
-            return null;
         }
 
     }

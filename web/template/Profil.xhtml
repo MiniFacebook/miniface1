@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="" />
+
+        <meta name="author" content="Dashboard" />
+
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+
+        <title>DASHGUM - Bootstrap Admin Template</title>
+        <!-- Bootstrap core CSS -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet" />
+        <!--external css-->
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+
+        <!-- Custom styles for this template -->
+        <link href="assets/css/style.css" rel="stylesheet" />
+        <link href="assets/css/style-responsive.css" rel="stylesheet" />
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script type="text/javascript" src="assets/js/jquery.js"></script>
+
+        <script>
+            $(function(){
+            $(".com").click(function(){
+            if ($(".comment").is(":hidden"))
+                    $(".comment").show();
+            else
+                    $(".comment").hide();
+            });
+            $(".btmcom").click(function(){
+            $(".comment").hide();
+            });
+            });
+            function affiche1(){
+            $(".zonemodif").show();
+            $(".contenu1").hide();
+            $(".texte1").val($(".contenu1").html());
+            $(".like").hide();
+            }
+            function changer1() {
+            $(".contenu1").text($(".texte1").val());
+            $(".contenu1").show();
+            $(".zonemodif").hide();
+            $(".like").show();
+            }
+            function cancel1(){
+            $(".contenu1").text($(".contenu1").text());
+            $(".like").show();
+            $(".contenu1").show();
+            $(".zonemodif").hide();
+            }
+            function affiche2(){
+            $(".zonemodif").show();
+            $(".contenu2").hide();
+            $(".texte2").val($(".contenu2").html());
+            $(".like").hide();
+            }
+            function changer2() {
+            $(".contenu2").text($(".texte2").val());
+            $(".contenu2").show();
+            $(".zonemodif").hide();
+            $(".like").show();
+            }
+            function cancel2(){
+            $(".contenu2").text($(".contenu2").text());
+            $(".like").show();
+            $(".contenu2").show();
+            $(".zonemodif").hide();
+            }
+            function afficherPop(){
+            myModal.style.display = "block";
+            $("#textM").val($("#statut").html());
+            }
+            function modifierPub(){
+            $("#statut").text($("#textM").val());
+            myModal.style.display = "none";
+            }
+            function fermer(){
+
+            myModal.style.display = "none";
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+        <section id="container">
+            <!-- **********************************************************************************************************************************************************
+            TOP BAR CONTENT & NOTIFICATIONS
+            *********************************************************************************************************************************************************** -->
+            <header class="header black-bg">
+
+                <div class="sidebar-toggle-box">
+
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation" />
+                </div>
+                <!--logo start-->
+                <a href="jsFilActualite.xhtml" class="logo"><b>Mini Facebook</b></a>
+                <!--logo end-->
+
+                <div class="nav notify-row" id="top_menu">
+                    <!--  notification start -->
+
+                    <ul class="nav top-menu">
+                        <!-- Notification Dropdown -->
+
+                        <li id="header_inbox_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="glyphicon glyphicon-bell" />
+                                <span class="badge bg-theme">3</span>
+                            </a>
+
+                            <ul class="dropdown-menu extended inbox">
+
+                                <div class="notify-arrow notify-arrow-green" />
+
+                                <li>
+
+                                    <p class="green">Notifications </p>
+                                </li>
+
+
+                                <li>
+                                    <a href="jsFilActualite.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from"> Zac Snider</span><br />
+                                            maintenant
+                                            <span class="time"> 
+                                                <button class="btn btn-danger "><i class="fa fa-trash-o " /></button>
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            a aime votre publication
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="jsFilActualite.xhtml">
+                                        <span class="photo"><img class="img-circle" src="assets/img/ui-divya.jpg" alt="" /></span>
+                                        <span class="subject">
+                                            <span class="from"> DIVYA MANIAN</span><br />
+                                            40min
+                                            <span class="time"> 
+                                                <button class="btn btn-danger "><i class="fa fa-trash-o " /></button>
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            a partage une publication
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="jsFilActualite.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from"> DAN ROGERS</span><br />
+                                            20/02/2018 16:44
+                                            <span class="time"> 
+                                                <button class="btn btn-danger "><i class="fa fa-trash-o " /></button>
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            a commente votre publication
+                                        </span>
+                                    </a>
+                                </li>
+
+
+
+                                <li>
+                                    <a href="Notification.xhtml">Voir Notifiations</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--notifications dropdown end-->
+                        <!-- settings start -->
+
+                        <li id="header_inbox_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">                          
+                                <i class="fa fa-user" />
+                                <span class="badge bg-theme">3</span>
+                            </a>
+
+                            <ul class="dropdown-menu extended inbox">
+
+                                <div class="notify-arrow notify-arrow-green" />
+
+                                <li>
+
+                                    <p class="green">Vous avez 3 invitations</p>
+                                </li>
+
+                                <li>
+                                    <a href="Invitation.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from">Zac Snider</span>
+
+                                            <div class="pull-right hidden-phone">
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
+                                            </div>
+                                        </span>
+
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="Invitation.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from">Divya Manian</span>
+
+                                            <div class="pull-right hidden-phone">
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
+                                            </div>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="Invitation.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from">Dan Rogers</span>
+
+                                            <div class="pull-right hidden-phone">
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
+                                            </div>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="Invitation.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from">Dj Sherman</span>
+
+                                            <div class="pull-right hidden-phone">
+                                                <button class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign" /></button>
+                                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o " /></button>
+                                            </div>
+                                        </span>
+
+                                    </a>
+                                </li>
+
+
+                                <li class="external">
+                                    <a href="Invitation.xhtml">voir Invitations</a>
+                                </li></ul>
+                        </li>
+
+                        <!-- settings end -->
+                        <!-- inbox dropdown start-->
+
+                        <li id="header_inbox_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="fa fa-envelope-o" />
+                                <span class="badge bg-theme">2</span>
+                            </a>
+
+                            <ul class="dropdown-menu extended inbox">
+
+                                <div class="notify-arrow notify-arrow-green" />
+
+                                <li>
+
+                                    <p class="green">You have 2 new messages</p>
+                                </li>
+
+                                <li>
+                                    <a href="Chat.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from">Zac Snider</span>
+                                            <span class="time">Just now</span>
+                                        </span>
+                                        <span class="message">
+                                            Hi mate, how is everything?
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="Chat.xhtml">
+                                        <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg" /></span>
+                                        <span class="subject">
+                                            <span class="from">Zac Snider</span>
+                                            <span class="time">3min ago</span>
+                                        </span>
+                                        <span class="message">
+                                            What are u doing ?
+                                        </span>
+                                    </a>
+                                </li>
+
+
+
+                                <li>
+                                    <a href="Chat.xhtml">Voir Messages</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- inbox dropdown end -->
+                        <!-- Notification Dropdown -->
+
+                        <li id="header_inbox_bar" class="dropdown">
+                            <a class="dropdown-toggle" href="Parametre.xhtml">
+                                <i class="glyphicon glyphicon-cog" />
+                            </a></li>
+
+                        <li id="header_inbox_bar" class="dropdown">
+                            <a class="dropdown-toggle" href="lock_screen.xhtml">
+                                <i class="glyphicon glyphicon-pause" />
+
+                            </a></li>
+
+                        <li id="header_inbox_bar" class="dropdown">
+                            <a class="dropdown-toggle" href="connexion.xhtml">
+                                <i class="glyphicon glyphicon-log-out" />
+
+                            </a></li>
+
+                        <li id="header_inbox_bar" class="dropdown">
+                            <input type="text" class="round-form" style="margin-left: 80px; height: 33px; width: 500px;" placeholder="   Search.." />
+                            <button type="button" class=" btn btn-theme" >Rechercher</button>
+                        </li>
+                        <!--notifications dropdown end-->
+                    </ul>
+                    <!--  notification end -->
+                </div>
+            </header>
+            <!--header end-->
+
+            <!-- **********************************************************************************************************************************************************
+            MAIN SIDEBAR MENU
+            *********************************************************************************************************************************************************** -->
+            <!--sidebar start-->
+            <aside>
+
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu start-->
+
+                    <ul class="sidebar-menu" id="nav-accordion">
+
+                        <h5 class="centered"><u>Amie Actif</u></h5>
+
+                        <li class="mt">
+                            <a href="Chat.xhtml">
+                                <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg" /></span>
+                                <span >Jimmy WLTON <br />
+                                    <center> 
+                                        <div> <i class="fa fa-circle text-success" /> Online </div> </center>      
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="mt">
+                            <a href="Chat.xhtml">
+                                <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg" /></span>
+                                <span> Alexandra TIM <br />
+                                    <center> 
+                                        <div> <i class="fa fa-circle text-success" /> Online </div> </center>      
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="mt">
+                            <a href="Chat.xhtml">
+                                <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg" /></span>
+                                <span> Ui-Sherman <br />
+                                    <center> 
+                                        <div> <i class="fa fa-circle text-success" /> Online </div> </center>      
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="mt">
+                            <a href="Chat.xhtml">
+                                <span class="photo"><img alt="avatar" src="assets/img/fr-08.jpg" /></span>
+                                <span> Divya MANIAN <br />
+                                    <center> 
+                                        <div> <i class="fa fa-circle text-success" /> Online </div> </center>      
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="mt">
+                            <a href="Chat.xhtml">
+                                <span class="photo"><img alt="avatar" src="assets/img/fr-01.jpg" /></span>
+                                <span> Dj Sherman <br />
+                                    <center> 
+                                        <div> <i class="fa fa-circle text-success" /> Online </div> </center>      
+                                </span>
+                            </a>
+                        </li>
+
+
+                        <li class="sub-menu">
+
+                        </li>
+                        <li class="mt">
+                            <a href="Chat.xhtml">
+                                <span class="photo"><img alt="avatar" src="assets/img/fr-03.jpg" /></span>
+                                <span> Dan ROGERS <br />
+                                    <center> 
+                                        <div> <i class="fa fa-circle text-success" /> Online </div> </center>      
+                                </span>
+                            </a>
+                        </li>     
+                        <form action="#" method="get" class="sidebar-form">
+
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control" placeholder="Search Amis ..." />
+                                <span class="input-group-btn">
+                                    <button type="submit" name="seach" id="search-btn" class="btn btn-flat"><i class="fa fa-search" /></button>
+                                </span>
+                            </div>
+                        </form>
+
+
+                    </ul>
+                    <!-- sidebar menu end--><!--
+                    <div class="centered">							
+                                    <button id="heure"></button>
+                                    <button id="min"></button>
+                                    <button id="sec"></button>
+                    </div>
+                    -->
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
+            <!--sidebar end-->
+
+
+            <!-- **********************************************************************************************************************************************************
+            MAIN CONTENT
+            *********************************************************************************************************************************************************** -->
+            <section id="main-content">
+                <img alt="avatar" src="assets/img/profile-02.jpg" style="width: 100%;" />
+                <section class="wrapper site-min-height">	 
+
+                    <div class="row mt" style="margin-top: -60px;">			
+
+                        <div class="col-lg-12 col-md-12 col-sm-12">						
+
+                            <div style="margin-top: -128px;">							    								    
+                                <img alt="avatar" src="assets/img/friends/ui-zac.jpg" class="pull-left" /><br /><br />
+
+                                <h1 style="color: white; margin-left: 150px;">Zac Sniders</h1>	
+                            </div>	
+                            <span class="wrapper row4 " style="margin-top: 0px;">
+                                <span id="quicknav" class="cleare">
+
+                                    <ul>
+
+                                        <li />
+
+                                        <li><a href="Profil.xhtml">Journal</a></li>										
+
+                                        <li><a href="Parametre.xhtml">A propos</a></li>										
+
+                                        <li><a href="Amis.xhtml">Amis</a></li>		
+
+                                        <li><a href="Gallery.xhtml">Photo/Video</a></li>
+
+                                        <li><a href="index.xhtml">Statistique</a></li>		
+
+                                        <li class="last"><a href="Profil.xhtml">Plus</a>
+
+                                            <ul>
+
+                                                <li><a href="List-Groupe.xhtml">Groupes</a></li>
+
+                                                <li><a href="Invitation.xhtml">Invitations</a></li>
+
+                                                <li><a href="Chat.xhtml"> Messages</a></li>
+
+                                                <li class="last"><a href="Parametre.xhtml">Parametres</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>							
+                                </span>
+                            </span>					
+                        </div><!-- __/col-lg-12 __-->
+                    </div>	<!-- __row __-->
+
+                    <div class="row mt">
+
+                        <div class="col-lg-12 col-md-6 col-sm-12 showback">
+
+                            <div class="col-lg-8 col-md-6 col-sm-12">
+
+                                
+                               <div class="showbackP">
+
+                                    <div class="desc">
+                                        <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span><b>
+                                        </b></div><b><br />
+                                        <textarea value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</textarea><br />
+
+                                        <div style="text-align: right;">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                            <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
+                                        </div><br />
+
+                                        <div class="pull-right margin-bottom: 20px">
+                                            <button type="button" class="btn btn-default">Publier</button>
+                                        </div>
+
+                                        <div><br /><br /></div>
+                                    </b></div><!--/showback -->
+                                    <b>
+                                </b>
+                            </div><!--/col-lg-8 -->
+                            <b>  
+
+                                <div class="col-lg-4 col-md-12 col-sm-12">
+
+                                    <div class="showbackI">
+
+                                        <div class="desc">	 
+
+                                            <h2> Intro</h2>
+                                            <i class="glyphicon glyphicon-briefcase" value="" />Travailler a <a>ACIMA</a><br />
+                                            <i class="material-icons" value="" />Etudier a <a>FSTG</a><br />
+                                            <i class="glyphicon glyphicon-map-marker" value=""/>Habite a <a>Marrakech</a><br />
+                                            <i class="fa fa-home" value="" />Ville d'origine <a>Marrakech</a><br />
+                                            <br />
+                                            <i class="" />Membre depuis november 2013<br/>
+                                        </div>
+                                    </div>
+                                </div><!--/col-lg-4 -->	
+                                <!---->
+                                	
+                            </b>
+</div><b>	<!--row -->
+
+                            <div class="row mt">
+
+                                <div class="col-lg-1 col-md-1 col-sm-1">
+                                </div>
+
+                                <div class="col-lg-10 col-md-12 col-sm-12">
+
+                                    <div class="showbackP">
+
+                                        <div class="desc">
+                                            <span><img src="assets/img/ui-divya.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a publie
+
+                                                <div class="pull-right dropdown">
+                                                    <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
+
+                                                    <ul class="dropdown-menu extende inbox">
+
+                                                        <li>
+                                                            <a href="index.xhtml#">Signaler la publication</a>
+                                                        </li>	
+                                                    </ul>
+                                                </div>
+                                            </span><br />
+                                        </div>	 
+
+                                        <div class="showback" id="contenuPub">
+
+                                            <div>
+                                                Statut ecrit par User 1	
+                                            </div><br />
+
+                                            <div>
+                                                <center>
+                                                    <span class="photo"><img alt="avatar" src="assets/img/portfolio/port02.jpg" /></span>
+                                                    <span class="photo"><img alt="avatar" src="assets/img/portfolio/port04.jpg" /></span><br /><br />
+                                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
+                                                    <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
+                                                    <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
+                                                </center><br />
+
+                                                <ul>
+
+                                                    <li>
+
+                                                        <div class="showback comment" hidden="">
+
+
+                                                            <div class="desc">
+                                                                <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span><b>
+                                                                </b></div><b><br />
+                                                                <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br />
+
+                                                                <div style="text-align: right;">
+                                                                    <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                                                    <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
+                                                                </div><br />
+
+                                                                <div class="pull-right margin-bottom: 20px">
+                                                                    <button type="button" class="btn btn-default btmcom">Commenter</button>
+                                                                </div>
+
+                                                                <div><br /><br /></div>
+                                                            </b></div><!--/showback --><b>
+                                                        </b></li><b>
+
+                                                        <li>
+
+                                                            <div class="showbackP">
+                                                                <span><img src="assets/img/ui-danro.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a comment
+
+                                                                    <div class="pull-right dropdown">
+                                                                        <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
+
+                                                                        <ul class="dropdown-menu extende inbox">
+
+                                                                            <li>
+                                                                                <a href="index.xhtml#">Signaler commentaire</a>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        Contenu du Commentaire
+                                                                        <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
+                                                                    </div><br />
+                                                                </span> 								
+                                                            </div>
+                                                        </li>
+                                                    </b></ul><b>
+
+                                                    <ul>
+
+                                                        <li>
+
+                                                            <div class="showbackP">
+                                                                <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>  Vous</b> avez commente 
+
+                                                                    <div class="pull-right dropdown">
+                                                                        <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
+
+                                                                        <ul class="dropdown-menu extende inbox">
+
+                                                                            <li>
+                                                                                <a onclick="affiche1()">
+                                                                                    Modifier
+                                                                                </a>
+                                                                            </li>
+
+                                                                            <li>
+                                                                                <a onclick="index.xhtml#">
+                                                                                    Supprimer
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <span class="contenu1">Contenu du Commentaire</span>
+                                                                        <span class="zonemodif" hidden="">
+                                                                            <textarea class="texte1" style="width: 100%;"></textarea>
+                                                                            <span class="pull-right">
+                                                                                <button type="button" class="btn btn-primary" onclick="changer1()">Modifier</button>
+                                                                                <button type="button" class="btn btn-default" onclick="cancel1()">Annuler</button><br />
+                                                                            </span>
+                                                                        </span>
+                                                                        <span>
+                                                                            <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
+                                                                        </span><br />	
+                                                                    </div>									
+                                                                </span></div>
+                                                        </li>
+                                                    </ul>
+                                                </b></div><b>			
+                                            </b></div><!-- /showback --><b>
+                                        </b></div><b>
+
+                                        <div><br /><br /></div>
+
+                                        <div class="showbackP">
+
+                                            <div>
+                                                <span> <img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>Vous avez </b>  publie
+
+                                                    <div class="pull-right dropdown">
+                                                        <button data-toggle="dropdown" class="dropdown-toggle btn btn-default">
+                                                            <i class="fa fa-ellipsis-h" />
+                                                        </button>
+
+                                                        <ul class="dropdown-menu extende inbox">
+
+                                                            <li>
+                                                                <a onclick="afficherPop()">Modifier</a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href="index.xhtml#">
+                                                                    Supprimer
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </span>
+                                            </div>
+
+                                            <div id="statut">Statut ecrit</div><br />
+
+                                            <div class="showback" id="contenuPub">
+
+                                                <div>
+                                                    <center>
+                                                        <span class="photo"><img alt="avatar" src="assets/img/portfolio/port02.jpg" /></span>
+                                                        <span class="photo"><img alt="avatar" src="assets/img/portfolio/port04.jpg" /></span>
+
+                                                        <br />
+                                                        <br />
+                                                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /> J'aime</button>
+                                                        <button type="button" class="btn btn-default com"><i class="fa fa-comment-o" /> Commenter</button>
+                                                        <button type="button" class="btn btn-default"><i class="fa fa-mail-forward" /> Partager</button>
+                                                    </center><br />
+
+                                                    <ul>
+
+                                                        <li>
+
+                                                            <div class="showback comment" hidden="">
+
+                                                                <div class="desc">
+                                                                    <span><img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b /></span></div><b><br />
+                                                                    <textarea value="que Pensez-vous" style="width: 100%;">Entrez votre commentaire</textarea><br />
+
+                                                                    <div style="text-align: right;">
+                                                                        <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                                                        <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                                                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
+                                                                    </div><br />
+
+                                                                    <div class="pull-right margin-bottom: 20px">
+                                                                        <button type="button" class="btn btn-default btmcom">Commenter</button>
+                                                                    </div>
+
+                                                                    <div><br /><br /></div>
+                                                                </b></div><!--/showback --><b>
+                                                            </b></li><b>
+
+                                                            <li>
+
+                                                                <div class="showbackP">
+                                                                    <span><img src="assets/img/ui-danro.jpg" class="img-circle" width="60" alt="" /> <b>  User 1</b> a commente
+
+                                                                        <div class="pull-right dropdown">
+                                                                            <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
+
+                                                                            <ul class="dropdown-menu extende inbox">
+
+                                                                                <li>
+                                                                                    <a href="index.xhtml#">Signaler le commentaire</a>
+                                                                                </li>
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <div>
+                                                                            Contenu du Commentaire
+                                                                            <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default"><i class="glyphicon glyphicon-thumbs-up" /></button>
+                                                                        </div><br /></span> 
+                                                                </div>
+                                                            </li>
+                                                        </b></ul><b>
+
+
+                                                        <ul>
+
+                                                            <li>
+
+                                                                <div class="showbackP"><span>
+                                                                        <img src="assets/img/ui-sam.jpg" class="img-circle" width="60" alt="" /> <b>  Vous</b> avez commente 
+
+                                                                        <div class="pull-right dropdown">
+                                                                            <button data-toggle="dropdown" class=" dropdown-toggle btn btn-default"><i class="fa fa-ellipsis-h" /></button>
+
+                                                                            <ul class="dropdown-menu extende inbox">
+
+                                                                                <li>
+                                                                                    <a onclick="affiche2()">
+                                                                                        Modifier
+                                                                                    </a>
+                                                                                </li>
+
+                                                                                <li>
+                                                                                    <a href="index.html#">
+                                                                                        Supprimer
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <div>
+                                                                            <span class="contenu2">Contenu du Commentaire</span>
+                                                                            <span class="zonemodif" hidden="">
+                                                                                <textarea class="texte2" style="width: 100%;"></textarea>
+                                                                                <span class="pull-right">
+                                                                                    <button type="button" class="btn btn-primary" onclick="changer2()">Modifier</button>
+                                                                                    <button type="button" class="btn btn-default" onclick="cancel2()">Annuler</button>
+                                                                                    <br />
+                                                                                </span>
+                                                                            </span>
+                                                                            <span>
+                                                                                <button style="margin-bottom: 10px;" type="button" class="pull-right btn btn-default like"><i class="glyphicon glyphicon-thumbs-up" /></button><br />
+                                                                            </span>
+                                                                            <br />
+                                                                        </div>
+                                                                    </span></div></li>
+                                                        </ul>
+                                                    </b></div><b>			
+                                                </b></div><!-- /showback --><b>
+                                            </b></div><b>
+
+                                            <div><br /><br /></div>
+
+                                        </b></b></div><b><b>			
+                                    </b></b></div><!-- __/col-lg-10__--><b><b>
+
+                                    <div id="myModal" class="modal">
+                                        <!-- Modal content -->
+
+                                        <div class="modal-content">
+
+                                            <textarea id="textM" value="que Pensez-vous" style="width: 100%; height: 100px;">Que pensez-vous</textarea><br />
+
+                                            <div style="text-align: right;">
+                                                <button type="button" class="btn btn-default"><i class="fa fa-file" /></button>
+                                                <button type="button" class="btn btn-default"><i class="fa fa-camera" /></button>
+                                                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-facetime-video" /></button>
+                                            </div><br />
+
+                                            <div id="photopubli">
+                                                <img alt="avatar" src="assets/img/portfolio/port02.jpg" width="200" height="200" /> 
+                                                <img alt="avatar" src="assets/img/portfolio/port04.jpg" width="200" height="200" /> 
+                                            </div>
+                                            <span class="pull-right">
+                                                <button type="button" class="btn btn-primary" onclick="modifierPub()">Modifier</button>
+                                                <button type="button" class="btn btn-default" onclick="fermer()">Annuler</button>
+                                                <br />
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                </b></b></b></div><b><b>	
+                        </b></b></section><b><b>
+                    </b></b></section><b><b>
+                    <!--main content end-->
+                    <!--footer start-->
+                    <footer class="site-footer">
+
+                        <div class="text-center">
+                            mini Facebook 2018
+                            <a href="general.html#" class="go-top">
+                                <i class="fa fa-angle-up" />
+                            </a>
+                        </div>
+                    </footer>
+                    <!--footer end-->
+                </b></b></section><b><b>
+                <!-- js placed at the end of the document so the pages load faster -->
+
+                <script src="assets/js/jquery.js"></script>
+
+                <script src="assets/js/jjquery-1.8.3.min.js"></script>
+
+                <script src="assets/js/bootstrap.min.js"></script>
+
+                <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+
+                <script src="assets/js/jquery.scrollTo.min.js"></script>
+
+                <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+                <!--common script for all pages-->
+
+                <script src="assets/js/common-scripts.js"></script>
+                <!--script for this page-->
+
+                <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+
+                <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+
+                <script>
+                                                    //custom select box
+                                                    $(function(){
+                                                    $('select.styled').customSelect();
+                                                    });
+                </script>
+
+                <script>
+                    // Set the date we're counting down to
+                    var countDownDate = new Date("Sep 5, 2018 23:30:00").getTime();
+                    // Update the count down every 1 second
+                    var x = setInterval(function() {
+                    // Get todays date and time
+                    var now = new Date().getTime();
+                    // Find the distance between now an the count down date
+                    var distance = countDownDate - now;
+                    // Time calculations for days, hours, minutes and seconds
+
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    // Output the result in an element with id="demo"
+                    document.getElementById("heure").innerHTML =
+                            hours + "h "
+                            document.getElementById("min").innerHTML = minutes + "m "
+                            document.getElementById("sec").innerHTML = seconds + "s ";
+                    // If the count down is over, write some text 
+                    if (distance &lt; 0) {
+                    clearInterval(x);
+                    document.getElementById("heure").innerHTML = "EXPIRED";
+                    }
+                    }, 1000);
+                </script>
+
+            </b></b></body></html>
