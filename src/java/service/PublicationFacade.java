@@ -33,11 +33,11 @@ public class PublicationFacade extends AbstractFacade<Publication> {
     public PublicationFacade() {
         super(Publication.class);
     }
-     public List<Publication> prifilPubAutre(User connectedUser) {
+     public List<Publication> profilPubAutre(User connectedUser) {
         String query = "SELECT p FROM Publication p  WHERE p.recepteur.login='" + connectedUser.getLogin() + "' ";
         return em.createQuery(query).getResultList();
     }
-    public List<Publication> prifilPubUser(User connectedUser) {
+    public List<Publication> profilPubUser(User connectedUser) {
         String query = "SELECT p FROM Publication p  WHERE p.recepteur.login='" + connectedUser.getLogin() + "' AND p.emetteur.login='" + connectedUser.getLogin() + "' ";
         return em.createQuery(query).getResultList();
     }

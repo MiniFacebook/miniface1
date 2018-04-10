@@ -12,8 +12,8 @@
     <h:body>
         <ui:include src="Header.xhtml"/>
         <ui:include src="SideBar.xhtml"/>
-                <ui:include src="Head.xhtml"/>
-                <ui:include src="jsBar.xhtml"/>
+        <ui:include src="Head.xhtml"/>
+        <ui:include src="jsBar.xhtml"/>
         <ui:include src="jsFilActualite.xhtml"/>
 
         <!--main content start-->
@@ -34,172 +34,145 @@
                                 </a>
                                 <p class="centered"><a> <label class=" control-label "> </label></a><a href="#"><img src="../resources/img/ui-zac.jpg" width="100" alt="" /></a> <input type="file" name="editPhotoProfilGroupe" value="Edit" /></p> <br />
 
-                                <p class="centered"> <label class="control-label "> <a href="#"><img src="../resources/img/profile-02.jpg" width="340" alt="" /></a><br /><br /> <input type="file" name="editPhotoBackgroundGroupe" value="Edit" /></label></p> <br />
+                                <!--<p class="centered"> <label class="control-label "> <a href="#"><img src="../resources/img/profile-02.jpg" width="340" alt="" /></a><br /><br /> <input type="file" name="editPhotoBackgroundGroupe" value="Edit" /></label></p> <br />!-->
 
-                                <label class=" control-label"> Intro</label>
-                                <textarea rows="3" class="form-control round-form" value="Intro"></textarea><br />
 
-                                <label class=" control-label"> UserName</label>
-                                <input type="text" class="form-control round-form" value="UserName" /><br />
+                                <p:outputLabel class=" control-label" value="Intro">Intro</p:outputLabel>
+                                <p:inputTextarea rows="3" class="form-control round-form" value="#{userController.selected.intro}" placeholder=" Enter Intro"/><br />
 
-                                <label class=" control-label"> Nom </label>
-                                <input type="text" class="form-control round-form" value="Nom " /><br />
+                                <p:outputLabel class=" control-label" value="UserName">UserName</p:outputLabel> 
+                                <p:inputText value="#{userController.selected.prenom}" type="text" class="form-control round-form" placeholder="Enter your UserName"   /><br />
 
-                                <label class=" control-label"> Sexe </label>
+                                <p:outputLabel class=" control-label" value="Nom"> Nom </p:outputLabel>
+                                <p:inputText value="#{userController.selected.nom}" type="text" class="form-control round-form" placeholder="Enter your Name"   /><br />
+                                
+                                <p:outputLabel class=" control-label" value="#{userController.selected.sexe}">Sexe</p:outputLabel>
 
                                 <div class="centered">
 
-                                    <label style="margin-left: 60px;" for="fm"> <input type="radio" required="" name="titre" id="fm" value="Mme" />Femme</label>
-                                    <label style="margin-left: 150px;">  <input type="radio" required="" name="titre" id="hm" value="M" />Homme</label>
+                                    <p:outputLabel style="margin-left: 60px;" for="fm"> <p:inputText type="radio" required="" name="titre" id="fm" value="Mme" />Femme</p:outputLabel>
+                                    <p:outputLabel style="margin-left: 150px;" for="fm">  <p:inputText type="radio" required="" name="titre" id="hm" value="M" />Homme</p:outputLabel>
                                 </div>
 
                                 <br />
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label" for="tele">Telephone (format 06XX-XXXXXX)</label>
+                                    <p:outputLabel class="col-xs-3 control-label" for="tele">Telephone (format 06XX-XXXXXX)</p:outputLabel>
 
                                     <div class="col-xs-3 inputGroupContainer">
 
                                         <div class="input-group">
-                                            <input type="tel" class="input-medium bfh-phone round-form" data-country="Morocco" id="tele" pattern="^\d{4}-\d{6}$" required="" />                                           
+                                            <p:inputText value="#{userController.selected.telephone}" type="tel" class="input-medium bfh-phone round-form" data-country="Morocco" id="tele" pattern="^\d{4}-\d{6}$" required="" />                                           
                                         </div>
                                     </div>
                                 </div><br />
-                                <label class=" control-label"> Anniversaire </label>
-                                <input type="date" class="form-control round-form" name="anniversaire " /><br /> 
+                                <p:outputLabel class=" control-label"> Anniversaire</p:outputLabel>
+                                <p:inputText type="date" class="form-control round-form" name="anniversaire " value="#{userController.selected.dateNaissance}"/><br /> 
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label">Ville Actuelle</label>
+                                    <p:outputLabel class="col-xs-3 control-label">Ville Actuelle</p:outputLabel>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="ville_actuelle">
+                                        <p:selectOneMenu class="form-control" name="ville_actuelle" value="#{userController.selected.lieu.ville}">
 
                                             <option value=""> Choisiez votre ville actulle</option>
 
-                                            <option value="marrakech">Marrakech</option>
-
-                                            <option value="fes">Fes</option>
-
-                                            <option value="rabat">Rabat</option>
-
-                                            <option value="casa">Casablanca</option>
-                                        </select>
+                                            <f:selectItem itemLabel="Marrakech" value="Marrakech"/>
+                                            <f:selectItem itemLabel="Fes" value="Fes"/>
+                                            <f:selectItem itemLabel="Rabat" value="Rabat"/>
+                                            <f:selectItem itemLabel="Casablanca" value="Casablanca"/>
+                                        </p:selectOneMenu>
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label">Ville Origine</label>
+                                    <p:outputLabel class="col-xs-3 control-label">Ville Origine</p:outputLabel>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="ville_origine">
+                                        <p:selectOneMenu class="form-control" name="ville_origine" value="#{userController.selected.lieu.villeOrigine}">
 
                                             <option value="">Choisiez votre ville Origine</option>
-
-                                            <option value="kech">Marrakech</option>
-
-                                            <option value="fes">Fes</option>
-
-                                            <option value="rabat">Rabat</option>
-
-                                            <option value="casa">Casablanca</option>
-                                        </select>
+                                            <f:selectItem itemLabel="Marrakech" value="Marrakech"/>
+                                            <f:selectItem itemLabel="Fes" value="Fes"/>
+                                            <f:selectItem itemLabel="Rabat" value="Rabat"/>
+                                            <f:selectItem itemLabel="Casablanca" value="Casablanca"/>
+                                        </p:selectOneMenu>
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label">Adresse</label>
+                                    <p:outputLabel class="col-xs-3 control-label">Adresse</p:outputLabel>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="ville_origine">
+                                        <p:selectOneMenu class="form-control" name="adresse" value="#{userController.selected.lieu.adresse}">
 
                                             <option value="">Choisiez votre adresse</option>
-
-                                            <option value="media">Medina</option>
-
-                                            <option value="guiliz">Guiliz</option>
-
-                                        </select>
+                                            <f:selectItem itemLabel="Medina" value="Medina"/>
+                                            <f:selectItem itemLabel="Guiliz" value="Guiliz"/>
+                                        </p:selectOneMenu>
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label">Libelle de l'etablissement</label>
+                                    <p:outputLabel class="col-xs-3 control-label">Libelle de l'etablissement</p:outputLabel>
 
-                                    <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="libelleEtablissement">
+                                        <div class="col-xs-5 selectContainer">
+                                            <p:selectOneMenu class="form-control" name="libelleEtablissement" value="#{userController.etablissementItem.etablissement.libelle}" >
 
-                                            <option value=""> Choisiez votre Etablissement</option>
+                                                <option value=""> Choisiez votre Etablissement</option>
+                                                <f:selectItem itemLabel="Fstg" value="Fstg"/>
+                                                <f:selectItem itemLabel="ENSA" value="ENSA"/>
+                                                <f:selectItem itemLabel="FSSM" value="FSSM"/>
 
-                                            <option value="Fstg">Fstg</option>
-
-                                            <option value="ensa">ENSA</option>
-
-                                            <option value="fssm">FSSM</option>
-
-                                        </select>
-                                    </div><br /></div>
+                                            </p:selectOneMenu>
+                                        </div><br /></div>
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label">Niveau</label>
+                                    <p:outputLabel class="col-xs-3 control-label">Niveau</p:outputLabel>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="niveau">
+                                        <p:selectOneMenu class="form-control" name="niveau" value="#{userController.etablissementItem.etablissement.niveau}">
 
                                             <option value="">Choisiez votre niveau</option>
-
-                                            <option value="s">1ere annee</option>
-
-                                            <option value="m">2eme anne</option>
-
-                                            <option value="l">licence</option>
-
-                                            <option value="xl">Master</option>
-                                        </select>
+                                            <f:selectItem itemLabel="s" value="1ere annee"/>
+                                            <f:selectItem itemLabel="m" value="2ere annee"/>
+                                            <f:selectItem itemLabel="l" value="licence"/>
+                                            <f:selectItem itemLabel="xl" value="Master"/>
+                                        </p:selectOneMenu>
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label">Formation</label>
+                                    <p:outputLabel class="col-xs-3 control-label" >Formation</p:outputLabel>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="ville_origine">
+                                        <p:selectOneMenu class="form-control" name="formation" value="#{userController.etablissementItem.etablissement.formation}">
 
                                             <option value="">Choisiez votre Formation</option>
-
-                                            <option value="mip">Mip</option>
-
-                                            <option value="mipc">MipC</option>
-
-                                            <option value="bcg">BCG</option>
-
-                                            <option value="sir">SIR</option>
-
-                                            <option value="pm">PM</option>
-                                        </select>
+                                            <f:selectItem itemLabel="mip" value="Mip"/>
+                                            <f:selectItem itemLabel="mipc" value="MipC"/>
+                                            <f:selectItem itemLabel="bcg" value="BCG"/>
+                                            <f:selectItem itemLabel="sir" value="SIR"/>
+                                            <f:selectItem itemLabel="pm" value="PM"/>
+                                        </p:selectOneMenu>
                                     </div><br /></div>
-                                <label class=" control-label"> periode passer dans cette etablissement</label>
-                                <input type="date" class="form-control round-form" value="Periode " /><br />
-                                <label class=" control-label"> Poste dans l'Emploi </label>
-                                <input type="text" class="form-control round-form" value="Poste " /><br />
-                                <label class=" control-label"> l'entreprise </label>
-                                <input type="text" class="form-control round-form" value="l'entreprise " /><br />
+                                <p:outputLabel class=" control-label"> Poste dans l'Emploi</p:outputLabel>
+                                <p:inputText type="text" class="form-control round-form" placeholder="Poste " value="#{userController.emploiItem.emploi.poste}" /><br />
+                                <p:outputLabel class=" control-label"> l'entreprise </p:outputLabel>
+                                <p:inputText type="text" class="form-control round-form" placeholder="l'entreprise " value="#{userController.emploiItem.emploi.entreprise}" /><br />
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label">Lieu</label>
+                                    <p:outputLabel class="col-xs-3 control-label">Lieu</p:outputLabel>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="Lieu">
+                                        <p:selectOneMenu class="form-control" name="Lieu" value="#{userController.emploiItem.emploi.lieu}">
 
-                                            <option value="">Choisiez le lieu de l'entrepris</option>
+                                            <option value="">Choisiez le lieu de l'entreprise</option>
 
-                                            <option value="kech">Marrakech</option>
-
-                                            <option value="fes">Fes</option>
-
-                                            <option value="rabat">Rabat</option>
-
-                                            <option value="casa">Casablanca</option>
-                                        </select>
+                                            <f:selectItem itemLabel="fes" value="Fes"/>
+                                            <f:selectItem itemLabel="rabat" value="Rabat"/>
+                                            <f:selectItem itemLabel="casa" value="Caseblanca"/>
+                                        </p:selectOneMenu>
                                     </div><br /></div>
 
                                 <div class="btn-group">
-                                    <button type="submit" class="btn btn-default btn-theme btn-lg btn-block " name="creegroupe">Enregistrer les modifications</button></div></form></div></div></div> </section>
+                                    <center><p:commandButton type="submit" class="btn btn-default btn-theme btn-lg btn-block " name="creegroupe" action="#{userController.fonctionParam()}"/>Enregistrer les modifications</center></div></form></div></div></div> </section>
             <!-- __/wrapper __-->
         </section><!-- /MAIN CONTENT -->
     </h:body>

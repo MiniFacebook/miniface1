@@ -31,8 +31,13 @@ public class PhotoController implements Serializable {
     public PhotoController() {
     }
 
+    public String AffichePhoto() {
+        ejbFacade.afficherPhoto(selected.getUser());
+        return "/template/Gallery";
+    }
+
     public Photo getSelected() {
-         if (selected == null) {
+        if (selected == null) {
             selected = new Photo();
         }
         return selected;
