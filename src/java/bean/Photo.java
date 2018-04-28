@@ -18,7 +18,6 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Photo implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,14 +31,6 @@ public class Photo implements Serializable {
     @ManyToOne
     private Groupe groupe;
 
-    public Photo(Long id, String chemin, String type, Boolean profil, Boolean background) {
-        this.id = id;
-        this.chemin = chemin;
-        this.type = type;
-        this.profil = profil;
-        this.background = background;
-    }
-
     public Groupe getGroupe() {
         return groupe;
     }
@@ -47,6 +38,8 @@ public class Photo implements Serializable {
     public void setGroupe(Groupe groupe) {
         this.groupe = groupe;
     }
+    
+    
 
     public Photo() {
     }
@@ -94,6 +87,8 @@ public class Photo implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+    
+    
 
     public Long getId() {
         return id;
@@ -128,4 +123,5 @@ public class Photo implements Serializable {
         return "Photo{" + "id=" + id + ", chemin=" + chemin + ", type=" + type + ", profil=" + profil + ", background=" + background + '}';
     }
 
+  
 }

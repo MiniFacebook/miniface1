@@ -18,20 +18,14 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Videos implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String extension;
-
+   
     @ManyToOne
     private User user;
-
-    public Videos(Long id, String extension) {
-        this.id = id;
-        this.extension = extension;
-    }
 
     public String getExtension() {
         return extension;
@@ -55,6 +49,8 @@ public class Videos implements Serializable {
 
     public Videos() {
     }
+
+   
 
     public Long getId() {
         return id;
@@ -89,4 +85,5 @@ public class Videos implements Serializable {
         return "Videos{" + "id=" + id + ", extension=" + extension + '}';
     }
 
+ 
 }

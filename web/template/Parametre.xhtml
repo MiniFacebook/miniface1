@@ -12,8 +12,8 @@
     <h:body>
         <ui:include src="Header.xhtml"/>
         <ui:include src="SideBar.xhtml"/>
-        <ui:include src="Head.xhtml"/>
-        <ui:include src="jsBar.xhtml"/>
+                <ui:include src="Head.xhtml"/>
+                <ui:include src="jsBar.xhtml"/>
         <ui:include src="jsFilActualite.xhtml"/>
 
         <!--main content start-->
@@ -34,49 +34,47 @@
                                 </a>
                                 <p class="centered"><a> <label class=" control-label "> </label></a><a href="#"><img src="../resources/img/ui-zac.jpg" width="100" alt="" /></a> <input type="file" name="editPhotoProfilGroupe" value="Edit" /></p> <br />
 
-                                <p:outputLabel class=" control-label" >Intro</p:outputLabel>
-                                <p:inputTextarea rows="3" class="form-control round-form" value="#{userController.selected.intro}" placeholder=" Enter Intro"/><br />
+                                <p class="centered"> <label class="control-label "> <a href="#"><img src="../resources/img/profile-02.jpg" width="340" alt="" /></a><br /><br /> <input type="file" name="editPhotoBackgroundGroupe" value="Edit" /></label></p> <br />
 
-                                <p:outputLabel class=" control-label" >UserName</p:outputLabel> 
-                                <p:inputText value="#{userController.selected.prenom}" type="text" class="form-control round-form" placeholder="Enter your UserName"   /><br />
+                                <label class=" control-label"> Intro</label>
+                                <textarea rows="3" class="form-control round-form" value="Intro"></textarea><br />
 
-                                <p:outputLabel class=" control-label"> Nom </p:outputLabel>
-                                <p:inputText value="#{userController.selected.nom}" type="text" class="form-control round-form" placeholder="Enter your Name"   /><br />
+                                <label class=" control-label"> UserName</label>
+                                <input type="text" class="form-control round-form" value="UserName" /><br />
 
-                                <p:outputLabel value="Sexe" class="col-md-3 control-label" for="Sexe"/>
-                                <div class="radio">
-                                    <div class="col-md-5">
+                                <label class=" control-label"> Nom </label>
+                                <input type="text" class="form-control round-form" value="Nom " /><br />
 
-                                        <h:selectOneRadio id="Sexe" value="#{userController.selected.sexe}">
-                                            <f:selectItem itemLabel="Femme" itemValue="femme" /> <br/>
-                                            <f:selectItem itemLabel="Homme" itemValue="homme" />
-                                        </h:selectOneRadio>
-                                    </div>
+                                <label class=" control-label"> Sexe </label>
+
+                                <div class="centered">
+
+                                    <label style="margin-left: 60px;" for="fm"> <input type="radio" required="" name="titre" id="fm" value="Mme" />Femme</label>
+                                    <label style="margin-left: 150px;">  <input type="radio" required="" name="titre" id="hm" value="M" />Homme</label>
                                 </div>
-                                <br/>
 
+                                <br />
 
                                 <div class="form-group">
-                                    <label class="col-xs-3 control-label" for="tele" >Telephone (format 06XX-XXXXXX)</label>
+                                    <label class="col-xs-3 control-label" for="tele">Telephone (format 06XX-XXXXXX)</label>
 
                                     <div class="col-xs-3 inputGroupContainer">
 
                                         <div class="input-group">
-                                            <p:inputText type="tel" class="input-medium bfh-phone round-form" value="#{userController.selected.telephone}" required="" placeholder="Enter your number" />                                           
+                                            <input type="tel" class="input-medium bfh-phone round-form" data-country="Morocco" id="tele" pattern="^\d{4}-\d{6}$" required="" />                                           
                                         </div>
                                     </div>
-                                </div>
-
-                                <br />
-                                <p:outputLabel class=" control-label"> Anniversaire </p:outputLabel>
-                                <p:inputText type="date" class="form-control round-form" value="#{userController.selected.dateNaissance}" /><br /> 
+                                </div><br />
+                                <label class=" control-label"> Anniversaire </label>
+                                <input type="date" class="form-control round-form" name="anniversaire " /><br /> 
 
                                 <div class="form-group">
-                                    <p:outputLabel class="col-xs-3 control-label" value="#{userController.selected.lieu.ville}">Ville Actuelle</p:outputLabel>
+                                    <label class="col-xs-3 control-label">Ville Actuelle</label>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="ville_actuelle">     
-                                            <option value=""> Choisiez votre ville actuelle</option>
+                                        <select class="form-control" name="ville_actuelle">
+
+                                            <option value=""> Choisiez votre ville actulle</option>
 
                                             <option value="marrakech">Marrakech</option>
 
@@ -85,12 +83,11 @@
                                             <option value="rabat">Rabat</option>
 
                                             <option value="casa">Casablanca</option>
-
                                         </select>
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <p:outputLabel class="col-xs-3 control-label" value="#{userController.selected.lieu.villeOrigine}">Ville Origine</p:outputLabel>
+                                    <label class="col-xs-3 control-label">Ville Origine</label>
 
                                     <div class="col-xs-5 selectContainer">
                                         <select class="form-control" name="ville_origine">
@@ -108,7 +105,7 @@
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <p:outputLabel class="col-xs-3 control-label" value="#{userController.selected.lieu.adresse}">Adresse</p:outputLabel>
+                                    <label class="col-xs-3 control-label">Adresse</label>
 
                                     <div class="col-xs-5 selectContainer">
                                         <select class="form-control" name="ville_origine">
@@ -123,10 +120,10 @@
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <p:outputLabel class="col-xs-3 control-label" value="#{etablissementController.selected.libelle}">Libelle de l'etablissement</p:outputLabel>
+                                    <label class="col-xs-3 control-label">Libelle de l'etablissement</label>
 
                                     <div class="col-xs-5 selectContainer">
-                                        <select class="form-control" name="libelleEtablissement" >
+                                        <select class="form-control" name="libelleEtablissement">
 
                                             <option value=""> Choisiez votre Etablissement</option>
 
@@ -140,7 +137,7 @@
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <p:outputLabel class="col-xs-3 control-label" value="#{etablissementController.selected.niveau}">Niveau</p:outputLabel>
+                                    <label class="col-xs-3 control-label">Niveau</label>
 
                                     <div class="col-xs-5 selectContainer">
                                         <select class="form-control" name="niveau">
@@ -158,7 +155,7 @@
                                     </div><br /></div>
 
                                 <div class="form-group">
-                                    <p:outputLabel class="col-xs-3 control-label" value="#{etablissementController.selected.formation}">Formation</p:outputLabel>
+                                    <label class="col-xs-3 control-label">Formation</label>
 
                                     <div class="col-xs-5 selectContainer">
                                         <select class="form-control" name="ville_origine">
@@ -176,19 +173,20 @@
                                             <option value="pm">PM</option>
                                         </select>
                                     </div><br /></div>
-
-                                <p:outputLabel class=" control-label"> Poste dans l'Emploi</p:outputLabel>
-                                <p:inputText type="text" class="form-control round-form" placeholder="Poste " value="#{emploiController.selected.poste}" /><br />
-                                <p:outputLabel class=" control-label"> l'entreprise </p:outputLabel>
-                                <p:inputText type="text" class="form-control round-form" placeholder="l'entreprise " value="#{emploiController.selected.entreprise}" /><br />
+                                <label class=" control-label"> periode passer dans cette etablissement</label>
+                                <input type="date" class="form-control round-form" value="Periode " /><br />
+                                <label class=" control-label"> Poste dans l'Emploi </label>
+                                <input type="text" class="form-control round-form" value="Poste " /><br />
+                                <label class=" control-label"> l'entreprise </label>
+                                <input type="text" class="form-control round-form" value="l'entreprise " /><br />
 
                                 <div class="form-group">
-                                    <p:outputLabel class="col-xs-3 control-label" value="#{emploiController.selected.lieu}">Lieu</p:outputLabel>
+                                    <label class="col-xs-3 control-label">Lieu</label>
 
                                     <div class="col-xs-5 selectContainer">
                                         <select class="form-control" name="Lieu">
 
-                                            <option value="">Choisiez le lieu de l'entreprise</option>
+                                            <option value="">Choisiez le lieu de l'entrepris</option>
 
                                             <option value="kech">Marrakech</option>
 
@@ -201,13 +199,7 @@
                                     </div><br /></div>
 
                                 <div class="btn-group">
-                                    <center><h:commandButton type="submit" class="btn btn-theme btn-bloc" style="width:100%; height:50%" value="Enregistrer les modifications" action="#{userController.fonctionParam()}"/></center>
-                                </div></form></div></div></div> </section>
-
-
-
-
-
+                                    <button type="submit" class="btn btn-default btn-theme btn-lg btn-block " name="creegroupe">Enregistrer les modifications</button></div></form></div></div></div> </section>
             <!-- __/wrapper __-->
         </section><!-- /MAIN CONTENT -->
     </h:body>

@@ -29,23 +29,16 @@ public class EmploiItem implements Serializable {
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateFin;
-
+  
     @ManyToOne
     private User user;
     @ManyToOne
     private Emploi emploi;
-
+    
     public EmploiItem() {
     }
-
     public EmploiItem(Long id) {
         this.id = id;
-    }
-
-    public EmploiItem(Long id, Date dateDebut, Date dateFin) {
-        this.id = id;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
     }
 
     public Date getDateDebut() {

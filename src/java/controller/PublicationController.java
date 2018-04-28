@@ -50,9 +50,6 @@ public class PublicationController implements Serializable {
     
     public PublicationController() {
     }
-    
-    
-    
 
     public Publication getSelected() {
          if (selected == null) {

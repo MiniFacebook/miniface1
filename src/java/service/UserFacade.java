@@ -13,20 +13,16 @@ import bean.EtablissementItem;
 import bean.Groupe;
 import bean.GroupeItem;
 import bean.Invitation;
-import bean.Lieu;
+import bean.SignalPublication;
+import bean.SignalUser;
 import bean.User;
 import controller.util.HashageUtil;
-import controller.util.PdfUtil;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -35,18 +31,7 @@ import net.sf.jasperreports.engine.JRException;
 @Stateless
 public class UserFacade extends AbstractFacade<User> {
 
-    
     InvitationFacade invitationFacade = new InvitationFacade();
-
-    @EJB
-    EmploiItemFacade emploiItemFacade;
-    @EJB
-    LieuFacade lieuFacade;
-    @EJB
-    PublicationFacade publicationFacade;
-    @EJB
-    EtablissementItemFacade etablissementItemFacade;
-
 
     @PersistenceContext(unitName = "faceNiMiPU")
     private EntityManager em;
@@ -251,102 +236,7 @@ public class UserFacade extends AbstractFacade<User> {
         
         
     }
-    //pour generer un pdf (jasper)
-    public void generatePdf() throws JRException, IOException {
-        Map<String, Object> params = new HashMap();
-        params.put("countUser", "ana");
-        PdfUtil.generatePdf(findAll(), params, "user", "/jasper/user.jasper");
-    }
-
     
-
-    //afficher liste des amis active
-    public List<User> afficheListAmis(User user) {
-        List<User> tt = em.createQuery("SELECT i FROM Invitation i WHERE i.dateAcceptation IS NOT NULL And (i.recepteur.login='" + user.getLogin() + "' OR i.emetteur.login='" + user.getLogin() + "') And (i.recepteur.active='true' And i.emetteur.active= 'true')").getResultList();
-        return tt;
-    }
-
-    //afficher liste des amis bloquers
-    public List<User> afficheListAmisBloquer(User user) {
-        List<User> tt = em.createQuery("SELECT b.bloque FROM Blocage WHERE b.dateBlocage IS NOT NULL And b.bloqueur.login= '" + user.getLogin() + "'").getResultList();
-        return tt;
-    }
-
-    //Affiche les info personelle du user
-    public User clone1(User u) {
-        User clone = new User();
-        clone.getTelephone();
-        clone.getIntro();
-        clone.getDateNaissance();
-        clone.getEmploiItems();
-        clone.getEtablissementItems();
-        clone.getLieu().getAdresse();
-        clone.getLieu().getVille();
-        clone.getLieu().getVilleOrigine();
-        edit(clone);
-        return clone;
-
-    }
-
-    // user (parametre)
-    public User clone(User u) {
-        User clone = new User();
-        clone(u, clone);
-        return clone;
-    }
-
-    public void clone(User u, User clone) {
-        clone.setLieu(u.getLieu());
-        clone.setIntro(u.getIntro());
-        clone.setPrenom(u.getPrenom());
-        clone.setNom(u.getNom());
-        clone.setEmploiItems(u.getEmploiItems());
-        clone.setTelephone(u.getTelephone());
-        clone.setSexe(u.getSexe());
-        clone.setDateNaissance(u.getDateNaissance());
-        clone.setEtablissementItems(u.getEtablissementItems());
-    }
-
-    //recherche1
-    public List<User> findByNameAndPrenom(String nom, String prenom) {
-        return getEntityManager().createQuery("SELECT u FROM User u WHERE u.nom='" + nom + "' AND u.prenom='" + prenom + '"').getResultList();
-    }
-
-    //faire un recherche a partie d'un nom et d'un prénom active(recherche2)
-    public List<User> findByNameAndPrenomActive(String nom, String prenom) {
-        return getEntityManager().createQuery("SELECT u FROM User u WHERE u.nom='" + nom + "' AND u.prenom='" + prenom + "' AND u.active == true").getResultList();
-    }
-
-    //Enregistrer la modification des info de user
-    public int fonctionParam(User user, List<EtablissementItem> etablissementItems, List<EmploiItem> emploiItems) {
-
-        User usercreer = find(user.getLogin());
-
-        User clone = new User();
-        clone(user, clone);
-
-        Lieu clone1 = new Lieu();
-        lieuFacade.clone(user.getLieu(), clone1);
-
-        for (EtablissementItem etablissementItem : etablissementItems) {
-            EtablissementItem cloned = new EtablissementItem();
-
-            cloned = etablissementItemFacade.clone(etablissementItem);
-            etablissementItemFacade.edit(cloned);
-        }
-
-        for (EmploiItem emploiItem : emploiItems) {
-            EmploiItem cloned = new EmploiItem();
-
-            cloned = emploiItemFacade.clone(emploiItem);
-            emploiItemFacade.edit(cloned);
-        }
-
-        edit(usercreer);
-        return 1;
-
-    }
-
     
     
 }
