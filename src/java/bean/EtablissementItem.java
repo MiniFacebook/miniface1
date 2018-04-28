@@ -21,13 +21,12 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class EtablissementItem implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateDebut;
+    private  Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateFin;
     @ManyToOne
@@ -40,12 +39,6 @@ public class EtablissementItem implements Serializable {
 
     public EtablissementItem(Long id) {
         this.id = id;
-    }
-
-    public EtablissementItem(Long id, Date dateDebut, Date dateFin) {
-        this.id = id;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
     }
 
     public Date getDateDebut() {
@@ -79,6 +72,7 @@ public class EtablissementItem implements Serializable {
     public void setEtablissement(Etablissement etablissement) {
         this.etablissement = etablissement;
     }
+    
 
     public Long getId() {
         return id;
@@ -112,5 +106,5 @@ public class EtablissementItem implements Serializable {
     public String toString() {
         return "bean.EtablissementUser[ id=" + id + " ]";
     }
-
+    
 }

@@ -30,11 +30,6 @@ public class VideosController implements Serializable {
 
     public VideosController() {
     }
-    
-    public String afficherVideos() {
-        ejbFacade.afficherVideos(selected.getUser());
-        return "/template/Gallery";
-    }
 
     public Videos getSelected() {
          if (selected == null) {

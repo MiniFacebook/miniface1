@@ -30,8 +30,7 @@ public class EmploiItemController implements Serializable {
 
     public EmploiItemController() {
     }
-    
-    
+
     public EmploiItem getSelected() {
          if (selected == null) {
             selected = new EmploiItem();

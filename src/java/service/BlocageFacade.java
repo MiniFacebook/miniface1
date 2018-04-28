@@ -7,18 +7,10 @@ package service;
 
 import bean.Blocage;
 import bean.Invitation;
-import bean.User;
-import controller.util.PdfUtil;
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import net.sf.jasperreports.engine.JRException;
-
 
 /**
  *
@@ -35,19 +27,6 @@ public class BlocageFacade extends AbstractFacade<Blocage> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
-    
-    //création
-    public int creerBlo(Long id, String pretexte, Date dateBlocage, User bloque, User bloqueur, Date dateSuppression) {
-        Blocage b = new Blocage(id, pretexte, dateBlocage, bloque, bloqueur, dateSuppression);
-        create(b);
-        return 1;
-    }
-
-    //pour generer un pdf (jasper)
-    public void generatePdf() throws JRException, IOException {
-        Map<String, Object> params = new HashMap();
-        PdfUtil.generatePdf(findAll(), params, "blocage", "/jasper/blocage.jasper");
     }
 
     public BlocageFacade() {

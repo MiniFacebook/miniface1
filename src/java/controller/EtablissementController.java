@@ -31,16 +31,8 @@ public class EtablissementController implements Serializable {
     public EtablissementController() {
     }
 
-    public EtablissementFacade getEjbFacade() {
-        return ejbFacade;
-    }
-
-    public void setEjbFacade(EtablissementFacade ejbFacade) {
-        this.ejbFacade = ejbFacade;
-    }
-
     public Etablissement getSelected() {
-        if (selected == null) {
+         if (selected == null) {
             selected = new Etablissement();
         }
         return selected;

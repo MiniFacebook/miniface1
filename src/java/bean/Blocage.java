@@ -20,7 +20,6 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Blocage implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +31,7 @@ public class Blocage implements Serializable {
     private User bloque;
     @ManyToOne
     private User bloqueur;
-    @Temporal(javax.persistence.TemporalType.DATE)
+     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateSuppression;
 
     public Date getDateSuppression() {
@@ -50,6 +49,7 @@ public class Blocage implements Serializable {
     public void setPretexte(String pretexte) {
         this.pretexte = pretexte;
     }
+   
 
     public Blocage() {
     }
@@ -58,16 +58,6 @@ public class Blocage implements Serializable {
         this.id = id;
     }
 
-    public Blocage(Long id, String pretexte, Date dateBlocage, User bloque, User bloqueur, Date dateSuppression) {
-        this.id = id;
-        this.pretexte = pretexte;
-        this.dateBlocage = dateBlocage;
-        this.bloque = bloque;
-        this.bloqueur = bloqueur;
-        this.dateSuppression = dateSuppression;
-    }
-
-    
     public Date getDateBlocage() {
         return dateBlocage;
     }
@@ -91,6 +81,8 @@ public class Blocage implements Serializable {
     public void setBloqueur(User bloqueur) {
         this.bloqueur = bloqueur;
     }
+    
+    
 
     public Long getId() {
         return id;
@@ -125,4 +117,8 @@ public class Blocage implements Serializable {
         return "Blocage{" + "id=" + id + ", dateBlocage=" + dateBlocage + ", dateSuppression=" + dateSuppression + '}';
     }
 
+    
+
+  
+    
 }
